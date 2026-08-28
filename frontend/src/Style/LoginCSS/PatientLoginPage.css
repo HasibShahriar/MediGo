@@ -1,0 +1,201 @@
+.patient-login-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  background-color: white;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* right side */
+
+.patient-login-right {
+  width: 50%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+}
+
+.patient-login-form {
+  width: 360px;
+}
+
+/* logo */
+
+.patient-login-logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.patient-login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 35px;
+}
+
+.patient-login-logo img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.patient-login-logo h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.patient-login-logo h2 span {
+  color: #ec4899;
+}
+
+/* text */
+
+.patient-login-form h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #111827;
+
+  margin-bottom: 10px;
+}
+
+.patient-login-form p {
+  font-size: 15px;
+  color: #9ca3af;
+
+  margin-bottom: 32px;
+}
+
+/* input */
+
+.patient-login-form label {
+  display: block;
+
+  font-size: 14px;
+  color: #111827;
+
+  margin-bottom: 10px;
+}
+
+.patient-login-form input {
+  width: 100%;
+  height: 55px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  padding: 0 18px;
+  margin-bottom: 22px;
+
+  outline: none;
+  font-size: 15px;
+
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.patient-login-form input:focus {
+  border-color: #ec4899;
+}
+
+/* password */
+
+.patient-password-box {
+  position: relative;
+}
+
+.patient-password-box input {
+  padding-right: 45px;
+}
+
+.patient-password-box span {
+  position: absolute;
+  right: 16px;
+  top: 18px;
+
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* forgot */
+
+.patient-forgot-link {
+  display: block;
+  text-align: right;
+
+  text-decoration: none;
+  color: #ec4899;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  margin-bottom: 32px;
+}
+
+/* login button */
+
+.patient-login-btn {
+  width: 100%;
+  height: 55px;
+
+  border: none;
+  border-radius: 28px;
+
+  background-color: #ec4899;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+  margin-bottom: 35px;
+}
+
+.patient-login-btn:hover {
+  background-color: #3454d1;
+}
+
+/* signup */
+
+.patient-signup-text {
+  text-align: center;
+
+  font-size: 14px;
+  color: #9ca3af;
+
+  margin: 0;
+}
+
+.patient-signup-text a {
+  text-decoration: none;
+  color: #ec4899;
+  font-weight: 700;
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+  .patient-login-page {
+    flex-direction: column;
+  }
+
+  .patient-login-right {
+    width: 100%;
+    min-height: auto;
+    padding: 50px 20px;
+  }
+
+  .patient-login-form {
+    width: 100%;
+    max-width: 360px;
+  }
+}
