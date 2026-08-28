@@ -1,0 +1,190 @@
+.patient-signup-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: white;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.patient-signup-right {
+  width: 50%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  padding: 35px;
+}
+
+.patient-signup-form {
+  width: 430px;
+}
+
+.patient-signup-logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.patient-signup-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.patient-signup-logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.patient-signup-logo h2 {
+  font-size: 25px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.patient-signup-logo h2 span {
+  color: #ec4899;
+}
+
+.patient-signup-form h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.patient-signup-form p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 22px;
+}
+
+.patient-signup-form label {
+  display: block;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.patient-signup-form input,
+.patient-signup-form select {
+  width: 100%;
+  height: 44px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  padding: 0 12px;
+  margin-bottom: 15px;
+
+  outline: none;
+  background-color: #eef4ff;
+
+  font-size: 14px;
+  color: #111827;
+
+  box-sizing: border-box;
+}
+
+.patient-signup-form input:focus,
+.patient-signup-form select:focus {
+  border-color: #ec4899;
+}
+
+.patient-signup-password-box {
+  position: relative;
+}
+
+.patient-signup-password-box input {
+  padding-right: 45px;
+}
+
+.patient-signup-password-box span {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.patient-terms-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.patient-terms-row input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.patient-terms-row p {
+  margin: 0;
+  font-size: 14px;
+  color: #111827;
+}
+
+.patient-terms-row a {
+  text-decoration: none;
+  color: #ec4899;
+  font-weight: 700;
+}
+
+.patient-signup-btn {
+  width: 100%;
+  height: 48px;
+
+  border: none;
+  border-radius: 25px;
+
+  background-color: #ec4899;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+  margin-bottom: 22px;
+}
+
+.patient-signup-btn:hover {
+  background-color: #3454d1;
+}
+
+.patient-login-text {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.patient-login-text a {
+  text-decoration: none;
+  color: #ec4899;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .patient-signup-page {
+    flex-direction: column;
+  }
+
+  .patient-signup-right {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .patient-signup-form {
+    width: 100%;
+    max-width: 430px;
+  }
+}
