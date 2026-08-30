@@ -1,0 +1,413 @@
+.dept-page {
+  width: 92%;
+  margin: 110px auto 50px;
+
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 35px;
+}
+
+
+.filter-sidebar {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  height: fit-content;
+
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.filter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.filter-top h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.filter-top button {
+  border: none;
+  background-color: #fff0f7;
+  color: #ec4899;
+
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-box {
+  margin-bottom: 28px;
+}
+
+.filter-box h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.filter-box label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 17px;
+  color: #374151;
+
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.filter-box input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ec4899;
+  cursor: pointer;
+}
+
+
+
+
+
+.fee-line {
+  width: 100%;
+  height: 4px;
+  background-color: #ec4899;
+  border-radius: 20px;
+  margin: 20px 0 8px;
+  position: relative;
+}
+
+.fee-line::before,
+.fee-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 17px;
+  height: 17px;
+
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+}
+
+.fee-line::before {
+  left: 0;
+}
+
+.fee-line::after {
+  right: 0;
+}
+
+.fee-slider {
+  width: 100%;
+  accent-color: #ec4899;
+  cursor: pointer;
+  margin: 18px 0;
+}
+
+.fee-values {
+  display: flex;
+  justify-content: right;
+}
+
+.fee-values p {
+  background-color: #ec4899;
+  color: white;
+
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 600;
+  
+}
+
+
+
+
+
+
+.doctor-result-area h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.doctor-result-area h2::first-letter {
+  font-weight: 800;
+}
+
+
+
+
+.doctor-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
+
+
+.doctor-list-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  display: grid;
+  grid-template-columns: 1.35fr 1.1fr 230px;
+  align-items: center;
+
+  margin-bottom: 24px;
+  overflow: hidden;
+
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.doctor-list-card:hover {
+  border-color: #ec4899;
+  box-shadow: 0px 12px 30px rgba(236, 72, 153, 0.18);
+  transform: translateY(-4px);
+}
+
+
+
+
+.doctor-basic-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+}
+
+.doctor-basic-info img {
+  width: 105px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #eaf3ff;
+}
+
+.doctor-basic-info h3 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #111827;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 5px;
+}
+
+.degree {
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.label-text {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.speciality-text {
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.5;
+}
+
+
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.online {
+  background-color: #22c55e;
+}
+
+.status-dot.offline {
+  background-color: #9ca3af;
+}
+
+
+
+
+.doctor-hospital-info {
+  height: 100%;
+  padding: 22px;
+
+  border-left: 1px solid #edf2f7;
+  border-right: 1px solid #edf2f7;
+}
+
+.doctor-hospital-info h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.5;
+
+  margin-bottom: 15px;
+}
+
+.doctor-extra-info {
+  display: flex;
+  gap: 45px;
+}
+
+.doctor-extra-info strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.rating-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating-text svg {
+  color: #fbbf24;
+}
+
+
+
+
+.doctor-fee-box {
+  height: 100%;
+  padding: 22px 26px;
+
+  position: relative;
+  background-color: #ffffff;
+}
+
+.doctor-fee-box h3 {
+  font-size: 31px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.doctor-fee-box h3 span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4b5563;
+  margin-left: 6px;
+}
+
+.doctor-fee-box p {
+  font-size: 14px;
+  color: #374151;
+}
+
+.doctor-arrow {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: #9ca3af;
+  font-size: 20px;
+
+  transition: 0.3s ease;
+}
+
+.doctor-list-card:hover .doctor-arrow {
+  color: #ec4899;
+  right: 20px;
+}
+
+
+
+
+.no-doctor {
+  background-color: white;
+  padding: 40px;
+  border-radius: 14px;
+  text-align: center;
+
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.no-doctor h3 {
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.no-doctor p {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+
+
+@media (max-width: 1100px) {
+  .dept-page {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-sidebar {
+    display: none;
+  }
+
+  .doctor-list-card {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-hospital-info {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  .doctor-fee-box {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dept-page {
+    width: 94%;
+    margin-top: 100px;
+  }
+
+  .doctor-basic-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctor-basic-info img {
+    width: 100%;
+    height: 220px;
+  }
+
+  .doctor-extra-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .doctor-fee-box h3 {
+    font-size: 26px;
+  }
+}

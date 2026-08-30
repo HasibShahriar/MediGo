@@ -1,0 +1,512 @@
+.patient-settings-page {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 130px 50px 80px;
+}
+
+
+.patient-settings-container {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 280px 1fr;
+
+  gap: 35px;
+
+  align-items: start;
+}
+
+
+/* ==================================
+   LEFT PROFILE
+================================== */
+
+.patient-settings-profile-card {
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.04);
+}
+
+
+.patient-settings-avatar {
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 4px solid #fce7f3;
+
+  margin-bottom: 18px;
+}
+
+
+.patient-settings-profile-card h2 {
+  margin: 0 0 7px;
+
+  font-size: 21px;
+
+  color: #111827;
+}
+
+
+.patient-settings-profile-card p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  word-break: break-word;
+}
+
+
+/* ==================================
+   RIGHT CONTENT
+================================== */
+
+.patient-settings-content {
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  min-height: 600px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.04);
+}
+
+
+/* ==================================
+   TABS
+================================== */
+
+.patient-settings-tabs {
+  display: flex;
+
+  gap: 35px;
+
+  padding: 0 35px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+.patient-settings-tab {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 22px 3px 17px;
+
+  background: transparent;
+
+  border: none;
+
+  border-bottom:
+    3px solid transparent;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  color: #4b5563;
+
+  cursor: pointer;
+}
+
+
+.patient-settings-tab:hover {
+  color: #ec4899;
+}
+
+
+.patient-settings-tab.active {
+  color: #ec4899;
+
+  border-bottom-color:
+    #ec4899;
+}
+
+
+/* ==================================
+   CONTENT
+================================== */
+
+.patient-settings-tab-content {
+  padding: 35px;
+}
+
+
+.patient-settings-heading {
+  margin-bottom: 30px;
+}
+
+
+.patient-settings-heading h1 {
+  margin: 0 0 7px;
+
+  color: #111827;
+
+  font-size: 25px;
+}
+
+
+.patient-settings-heading p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* ==================================
+   GENERAL FORM
+================================== */
+
+.patient-settings-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 23px 30px;
+}
+
+
+.patient-settings-input-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.patient-settings-input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+
+.patient-settings-input-group label {
+  color: #252525;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.patient-settings-input-group input,
+.patient-settings-input-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 15px;
+
+  border:
+    1px solid #d1d5db;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background-color: white;
+
+  font-size: 15px;
+
+  font-family: inherit;
+}
+
+
+.patient-settings-input-group textarea {
+  resize: vertical;
+
+  min-height: 110px;
+}
+
+
+.patient-settings-input-group input:focus,
+.patient-settings-input-group textarea:focus {
+  border-color: #ec4899;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(236, 72, 153, 0.1);
+}
+
+
+/* ==================================
+   SAVE BUTTON
+================================== */
+
+.patient-settings-save-btn {
+  margin-top: 28px;
+
+  padding: 13px 24px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #ec4899;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.patient-settings-save-btn:hover {
+  background-color: #db2777;
+}
+
+
+/* ==================================
+   PROFILE PICTURE
+================================== */
+
+.patient-picture-section {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 22px;
+}
+
+
+.patient-picture-preview {
+  width: 170px;
+
+  height: 170px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border:
+    5px solid #fce7f3;
+}
+
+
+.patient-picture-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.patient-picture-select-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  background-color: white;
+
+  color: #ec4899;
+
+  border:
+    1px solid #ec4899;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.patient-picture-select-btn:hover {
+  background-color: #fdf2f8;
+}
+
+
+.picture-save-btn {
+  margin-top: 0;
+}
+
+
+.patient-picture-note {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* ==================================
+   PASSWORD
+================================== */
+
+.patient-password-settings-form {
+  max-width: 650px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+
+.patient-settings-password-box {
+  position: relative;
+}
+
+
+.patient-settings-password-box input {
+  padding-right: 45px;
+}
+
+
+.patient-settings-password-box span {
+  position: absolute;
+
+  top: 50%;
+
+  right: 15px;
+
+  transform:
+    translateY(-50%);
+
+  color: #6b7280;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.patient-settings-password-box span:hover {
+  color: #ec4899;
+}
+
+
+/* ==================================
+   LOADING / LOGIN
+================================== */
+
+.patient-settings-loading,
+.patient-settings-login-required {
+  min-height: 70vh;
+
+  padding-top: 120px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media (
+  max-width: 1000px
+) {
+
+  .patient-settings-page {
+    padding-left: 25px;
+
+    padding-right: 25px;
+  }
+
+
+  .patient-settings-container {
+    grid-template-columns: 1fr;
+  }
+
+
+  .patient-settings-tabs {
+    overflow-x: auto;
+
+    gap: 20px;
+  }
+
+}
+
+
+@media (
+  max-width: 650px
+) {
+
+  .patient-settings-page {
+    padding-left: 15px;
+
+    padding-right: 15px;
+  }
+
+
+  .patient-settings-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .patient-settings-input-group.full-width {
+    grid-column: auto;
+  }
+
+
+  .patient-settings-tabs {
+    padding: 0 20px;
+  }
+
+
+  .patient-settings-tab {
+    white-space: nowrap;
+  }
+
+
+  .patient-settings-tab-content {
+    padding: 25px 20px;
+  }
+
+
+  .patient-picture-buttons {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}

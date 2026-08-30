@@ -1,0 +1,611 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+.doctor-settings-page {
+  min-height: 100vh;
+  display: flex;
+  background-color: #ffffff;
+}
+
+
+.doctor-settings-main {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.doctor-settings-content {
+  display: grid;
+
+  grid-template-columns:
+    230px minmax(0, 1fr);
+
+  gap: 30px;
+
+  padding: 35px 40px 60px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.doctor-settings-left {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding-top: 15px;
+}
+
+
+.settings-left-profile {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  background-color: #f3f4f6;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.08);
+}
+
+
+.settings-left-profile img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.settings-profile-letter {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ff4b22;
+
+  color: #ffffff;
+
+  font-size: 62px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.doctor-settings-right {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.doctor-settings-tabs {
+  display: flex;
+
+  align-items: center;
+
+  gap: 42px;
+
+  border-bottom:
+    1px solid #dddddd;
+
+  margin-bottom: 30px;
+}
+
+
+.doctor-settings-tab {
+  position: relative;
+
+  border: none;
+
+  background: transparent;
+
+  padding:
+    15px 0 16px;
+
+  color: #222222;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.doctor-settings-tab::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 3px;
+
+  background-color: transparent;
+}
+
+
+.doctor-settings-tab.active {
+  color: #ef3f3f;
+}
+
+
+.doctor-settings-tab.active::after {
+  background-color: #ef3f3f;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.doctor-settings-panel {
+  width: 100%;
+
+  max-width: 1050px;
+}
+
+
+.settings-panel-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 28px;
+}
+
+
+.settings-panel-header > svg {
+  color: #ef3f3f;
+
+  font-size: 22px;
+}
+
+
+.settings-panel-header h2 {
+  margin: 0;
+
+  font-size: 22px;
+
+  color: #171717;
+}
+
+
+.settings-panel-header p {
+  margin:
+    5px 0 0;
+
+  color: #777777;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   GENERAL GRID
+========================================================= */
+
+.doctor-settings-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 20px 22px;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.doctor-setting-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.doctor-field-full {
+  grid-column:
+    1 / -1;
+}
+
+
+.doctor-setting-field label {
+  color: #333333;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.doctor-setting-field input,
+.doctor-setting-field select,
+.doctor-setting-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid #d8dce3;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  padding:
+    12px 13px;
+
+  background-color:
+    #ffffff;
+
+  color: #222222;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+
+.doctor-setting-field textarea {
+  min-height: 90px;
+
+  resize: vertical;
+}
+
+
+.doctor-setting-field input:focus,
+.doctor-setting-field select:focus,
+.doctor-setting-field textarea:focus {
+  border-color:
+    #ef3f3f;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(
+      239,
+      63,
+      63,
+      0.08
+    );
+}
+
+
+/* =========================================================
+   READ ONLY
+========================================================= */
+
+.doctor-readonly-field {
+  background-color:
+    #f5f6f8 !important;
+
+  color:
+    #777777 !important;
+
+  cursor:
+    not-allowed;
+}
+
+
+/* =========================================================
+   SAVE AREA
+========================================================= */
+
+.doctor-settings-save-area {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 30px;
+}
+
+
+.doctor-settings-save-btn {
+  border: none;
+
+  border-radius: 7px;
+
+  padding:
+    12px 22px;
+
+  background-color:
+    #ef3f3f;
+
+  color:
+    #ffffff;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s;
+}
+
+
+.doctor-settings-save-btn:hover {
+  background-color:
+    #dc3030;
+}
+
+
+.doctor-settings-save-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   PROFILE PICTURE
+========================================================= */
+
+.doctor-profile-picture-section {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 18px;
+
+  margin-top: 10px;
+}
+
+
+.doctor-profile-picture-preview {
+  width: 190px;
+  height: 190px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  border:
+    1px solid #dedede;
+
+  background-color:
+    #f3f4f6;
+}
+
+
+.doctor-profile-picture-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.profile-picture-letter {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background-color:
+    #ff4b22;
+
+  color:
+    #ffffff;
+
+  font-size: 72px;
+
+  font-weight: 400;
+}
+
+
+.doctor-choose-image-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    11px 18px;
+
+  border:
+    1px solid #ef3f3f;
+
+  border-radius: 7px;
+
+  background-color:
+    #ffffff;
+
+  color:
+    #ef3f3f;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s;
+}
+
+
+.doctor-choose-image-btn:hover {
+  background-color:
+    #fff5f5;
+}
+
+
+.selected-image-name {
+  margin: 0;
+
+  color:
+    #666666;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.doctor-password-area {
+  width: 100%;
+
+  max-width: 520px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.doctor-settings-loading {
+  min-height: 400px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #666666;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (
+  max-width: 950px
+) {
+
+  .doctor-settings-content {
+    grid-template-columns:
+      1fr;
+
+    padding:
+      25px;
+  }
+
+
+  .doctor-settings-left {
+    justify-content:
+      flex-start;
+  }
+
+
+  .doctor-settings-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .doctor-field-full {
+    grid-column:
+      auto;
+  }
+
+}
+
+
+@media (
+  max-width: 600px
+) {
+
+  .doctor-settings-content {
+    padding:
+      20px 15px;
+  }
+
+
+  .doctor-settings-tabs {
+    gap: 24px;
+
+    overflow-x: auto;
+  }
+
+
+  .doctor-settings-tab {
+    white-space: nowrap;
+
+    font-size: 15px;
+  }
+
+
+  .settings-left-profile {
+    width: 120px;
+    height: 120px;
+  }
+
+}

@@ -1,0 +1,157 @@
+.admin-sidebar {
+  width: 290px;
+  min-height: 100vh;
+
+  background: linear-gradient(180deg, #fff0f7 0%, #ffffff 45%, #eaf3ff 100%);
+  padding: 25px 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-right: 1px solid #f3d6e6;
+  box-shadow: 6px 0px 25px rgba(236, 72, 153, 0.08);
+}
+
+/* Logo */
+.admin-logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 18px 25px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.admin-logo h2 {
+  font-size: 25px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.admin-logo h2 span {
+  color: #ec4899;
+}
+
+/* Profile */
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 25px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.admin-profile p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Menu */
+.admin-menu {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-menu-link {
+  text-decoration: none;
+  color: #111827;
+
+  padding: 15px 22px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: 0.3s ease;
+}
+
+.admin-menu-link svg {
+  color: #ec4899;
+  font-size: 18px;
+}
+
+.admin-menu-link:hover {
+  background: linear-gradient(135deg, #fff0f7, #eaf3ff);
+  color: #ec4899;
+}
+
+.admin-menu-link.active {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: white;
+}
+
+.admin-menu-link.active svg {
+  color: white;
+}
+
+/* Logout */
+.admin-logout {
+  margin-top: auto;
+
+  text-decoration: none;
+  color: #ec4899;
+
+  padding: 15px 22px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  transition: 0.3s ease;
+}
+
+.admin-logout svg {
+  font-size: 18px;
+}
+
+.admin-logout:hover {
+  background-color: #fff0f7;
+  color: #0d6efd;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .admin-sidebar {
+    display: none;
+  }
+}

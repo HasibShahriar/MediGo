@@ -1,0 +1,148 @@
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #ec4899, #d946ef);
+  color: white;
+  margin-top: 70px;
+}
+
+.footer-content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 65px 0;
+
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 45px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.footer-logo img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.footer-logo h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.footer-medi {
+  color: #ffb6d9;
+}
+
+.footer-go {
+  color: white;
+}
+
+.footer-about {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+  color: #f1f5ff;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 16px;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.footer-social span {
+  width: 36px;
+  height: 36px;
+
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.footer-social span:hover {
+  background-color:  #0d6efd;
+  transform: translateY(-4px);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffb6d9;
+  padding-left: 5px;
+}
+
+.footer-download {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.download-box {
+  width: 190px;
+  background-color: #111827;
+  color: white;
+
+  padding: 10px 18px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.download-box small {
+  display: block;
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+.download-box strong {
+  font-size: 20px;
+}
+
+.download-box:hover {
+  background-color:  #0d6efd;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  background-color: white;
+  color: #4b5563;
+  text-align: center;
+  padding: 18px;
+  font-size: 15px;
+}

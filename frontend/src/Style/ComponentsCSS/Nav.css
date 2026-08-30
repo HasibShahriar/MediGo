@@ -1,0 +1,422 @@
+.medigo-navbar {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid #e8f0fe;
+
+  gap: 200px;
+
+  background-color: white;
+
+  position: fixed;
+
+  z-index: 100;
+
+  top: 0;
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+
+.brand img {
+  width: 60px;
+  height: 60px;
+
+  object-fit: contain;
+}
+
+
+.brand-name a {
+  font-family: "Poppins", Arial, sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.medi {
+  color: #ec4899;
+}
+
+
+.go {
+  color: #111827;
+}
+
+
+.brand-line {
+  width: 100%;
+
+  height: 1px;
+
+  background-color: #d1d5db;
+}
+
+
+.brand-tagline {
+  font-size: 10px;
+
+  color: #9ca3af;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav-link {
+  display: flex;
+
+  gap: 50px;
+
+  list-style: none;
+
+  cursor: pointer;
+}
+
+
+.nav-link li a {
+  font-size: 16px;
+
+  font-weight: 500;
+
+  color: #222222;
+
+  font-family: Arial, sans-serif;
+
+  text-decoration: none;
+}
+
+
+.nav-link li a:hover {
+  color: #ec4899;
+
+  cursor: pointer;
+}
+
+
+.nav-link li a.active {
+  color: #ec4899;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   COMMUNITY
+========================= */
+
+.community-menu {
+  position: relative;
+}
+
+
+.community-dropdown {
+  display: none;
+
+  position: absolute;
+
+  min-width: 500px;
+
+  background-color: white;
+
+  padding: 30px;
+
+  border-radius: 10px;
+
+  box-shadow: 0px 8px 20px
+    rgba(0, 0, 0, 0.15);
+
+  z-index: 1000;
+}
+
+
+.community-menu:hover
+.community-dropdown {
+  display: flex;
+
+  gap: 30px;
+}
+
+
+.community-dropdown img {
+  width: 90px;
+
+  height: 90px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+
+.community-dropdown p {
+  margin: 8px 0;
+
+  font-size: 15px;
+
+  color: black;
+}
+
+
+.community-dropdown p:hover {
+  color: #ec4899;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   LOGIN AREA
+========================= */
+
+.login-area {
+  position: relative;
+
+  right: 150px;
+}
+
+
+.login-btn {
+  background-color: #ec4899;
+
+  color: white;
+
+  border: none;
+
+  padding: 14px 28px;
+
+  border-radius: 6px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.login-dropdown {
+  display: none;
+
+  position: absolute;
+
+  right: 0;
+
+  background-color: #f9f9f9;
+
+  min-width: 200px;
+
+  box-shadow:
+    0px 8px 16px 0px
+    rgba(0, 0, 0, 0.2);
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  z-index: 1000;
+}
+
+
+.login-area:hover
+.login-dropdown {
+  display: block;
+}
+
+
+.login-dropdown a {
+  color: #111827;
+
+  text-decoration: none;
+
+  width: 100%;
+
+  padding: 20px 25px;
+
+  border: none;
+
+  background-color: #f9f9f9;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+.login-dropdown a:hover {
+  background-color: #eaf3ff;
+
+  color: #ec4899;
+}
+
+
+#doc,
+#pat,
+#ad {
+  padding-left: 15px;
+}
+
+
+/* =========================
+   PATIENT PROFILE
+========================= */
+
+.patient-profile-area {
+  position: relative;
+
+  right: 150px;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* PROFILE IMAGE */
+
+.patient-profile-image {
+  width: 46px;
+
+  height: 46px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  border: 2px solid #ec4899;
+
+  padding: 2px;
+
+  background-color: white;
+}
+
+
+/* =========================
+   PROFILE DROPDOWN
+========================= */
+
+.patient-profile-dropdown {
+  display: none;
+
+  position: absolute;
+
+  top: 50px;
+
+  right: 0;
+
+  min-width: 190px;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0px 8px 20px
+    rgba(0, 0, 0, 0.15);
+
+  overflow: hidden;
+
+  z-index: 2000;
+}
+
+
+/* SHOW DROPDOWN ON HOVER */
+
+.patient-profile-area:hover
+.patient-profile-dropdown {
+  display: block;
+}
+
+
+/* ACCOUNT + SETTINGS */
+
+.patient-profile-dropdown a {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px 20px;
+
+  box-sizing: border-box;
+
+  color: #111827;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 500;
+}
+
+
+/* LOGOUT */
+
+.patient-profile-dropdown button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px 20px;
+
+  box-sizing: border-box;
+
+  border: none;
+
+  background-color: white;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+/* HOVER */
+
+.patient-profile-dropdown a:hover,
+.patient-profile-dropdown button:hover {
+  background-color: #fdf2f8;
+
+  color: #ec4899;
+}

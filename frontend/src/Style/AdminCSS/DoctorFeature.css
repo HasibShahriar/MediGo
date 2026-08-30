@@ -1,0 +1,599 @@
+.admin-doctor-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  background: linear-gradient(135deg, #fff0f7, #eaf3ff);
+}
+
+.admin-doctor-main {
+  padding: 35px;
+}
+
+.doctor-table-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #f3d6e6;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
+}
+
+.doctor-table-header {
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doctor-table-header h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.doctor-search-box {
+  width: 330px;
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid #f3d6e6;
+  background: #fff0f7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doctor-search-box svg {
+  color: #ec4899;
+}
+
+.doctor-search-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+.doctor-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.doctor-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.doctor-admin-table thead {
+  background: linear-gradient(135deg, #f5f3ff, #eaf3ff);
+}
+
+.doctor-admin-table th,
+.doctor-admin-table td {
+  padding: 17px 20px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.doctor-admin-table th {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.doctor-admin-table td {
+  font-size: 15px;
+  color: #374151;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.doctor-admin-table tbody tr:nth-child(even) {
+  background: linear-gradient(135deg, #faf5ff, #edf7ff);
+}
+
+.doctor-admin-table tbody tr:hover {
+  background: #fff0f7;
+}
+
+.doctor-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doctor-name-cell img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.doctor-name-cell span {
+  font-weight: 700;
+  color: #111827;
+}
+
+.table-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.approve-btn,
+.reject-btn,
+.block-btn,
+.delete-btn,
+.view-btn {
+  border: none;
+  height: 34px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.3s ease;
+}
+
+.approve-btn {
+  padding: 0 12px;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.approve-btn:hover {
+  background: #16a34a;
+  color: white;
+}
+
+.reject-btn {
+  padding: 0 12px;
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.approved-badge {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.view-btn,
+.block-btn,
+.delete-btn {
+  width: 36px;
+  text-decoration: none;
+}
+
+.view-btn {
+  background: #eaf3ff;
+  color: #0d6efd;
+}
+
+.view-btn:hover {
+  background: #0d6efd;
+  color: white;
+}
+
+.block-btn {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.block-btn:hover {
+  background: #d97706;
+  color: white;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.no-doctor-found {
+  padding: 45px;
+  text-align: center;
+}
+
+.no-doctor-found h3 {
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.no-doctor-found p {
+  color: #6b7280;
+}
+
+.doctor-table-footer {
+  padding: 22px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doctor-table-footer p {
+  color: #374151;
+  font-size: 15px;
+}
+
+.doctor-pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.doctor-pagination button {
+  min-width: 38px;
+  height: 38px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.doctor-pagination button:hover {
+  background: #fff0f7;
+  color: #ec4899;
+  border-color: #ec4899;
+}
+
+.doctor-pagination button.active-page {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: white;
+  border-color: transparent;
+}
+
+.doctor-pagination button:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1100px) {
+  .admin-doctor-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  .admin-doctor-main {
+    padding: 20px;
+  }
+
+  .doctor-table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .doctor-search-box {
+    width: 100%;
+  }
+
+  .doctor-table-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}
+
+
+/* =====================================================
+   PENDING STATUS
+===================================================== */
+
+.pending-badge {
+  display: inline-block;
+
+  padding: 7px 13px;
+
+  border-radius: 20px;
+
+  background-color: #fff7ed;
+
+  color: #ea580c;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   VIEW BUTTON
+===================================================== */
+
+.view-btn {
+  width: 38px;
+
+  height: 38px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background-color: #eff6ff;
+
+  color: #2563eb;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+
+.view-btn:hover {
+  background-color: #dbeafe;
+
+  color: #1d4ed8;
+}
+
+
+/* =====================================================
+   POPUP BACKGROUND
+===================================================== */
+
+.doctor-details-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-color:
+    rgba(17, 24, 39, 0.5);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+}
+
+
+/* =====================================================
+   POPUP BOX
+===================================================== */
+
+.doctor-details-modal {
+  width: 90%;
+
+  max-width: 520px;
+
+  background-color: white;
+
+  border-radius: 14px;
+
+  padding: 32px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.2);
+
+  animation:
+    doctorModalAnimation
+    0.2s ease;
+}
+
+
+@keyframes doctorModalAnimation {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-12px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   POPUP HEADER
+===================================================== */
+
+.doctor-details-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+}
+
+
+.doctor-details-icon {
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background-color: #fce7f3;
+
+  color: #ec4899;
+
+  font-size: 19px;
+}
+
+
+.doctor-details-header h2 {
+  margin: 0 0 4px 0;
+
+  color: #111827;
+
+  font-size: 22px;
+}
+
+
+.doctor-details-header p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   INFORMATION
+===================================================== */
+
+.doctor-details-info {
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.doctor-detail-row {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 18px 20px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+.doctor-detail-row:last-child {
+  border-bottom: none;
+}
+
+
+.doctor-detail-label {
+  color: #6b7280;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+
+.doctor-detail-value {
+  color: #111827;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  word-break: break-word;
+}
+
+
+.doctor-important-value {
+  color: #ec4899;
+
+  font-size: 17px;
+}
+
+
+/* =====================================================
+   OK BUTTON
+===================================================== */
+
+.doctor-modal-bottom {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 25px;
+}
+
+
+.doctor-modal-ok-btn {
+  min-width: 100px;
+
+  padding: 11px 25px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #ec4899;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.doctor-modal-ok-btn:hover {
+  background-color: #db2777;
+}
+
+
+/* =====================================================
+   POPUP LOADING
+===================================================== */
+
+.doctor-details-loading {
+  min-height: 180px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: #6b7280;
+
+  font-size: 15px;
+}
