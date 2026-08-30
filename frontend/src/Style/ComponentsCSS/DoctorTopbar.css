@@ -1,0 +1,147 @@
+.doctor-topbar {
+  width: 100%;
+  height: 78px;
+
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 32px;
+
+  border-bottom: 1px solid #eef2f7;
+
+  font-family: "Poppins", Arial, sans-serif;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.doctor-topbar-left p {
+  font-size: 15px;
+  color: #6b7280;
+
+  margin: 0 0 4px 0;
+}
+
+
+.doctor-topbar-left h2 {
+  font-size: 22px;
+  font-weight: 800;
+
+  color: #111827;
+
+  margin: 0;
+}
+
+
+/* =========================================
+   PROFILE AREA
+========================================= */
+
+.doctor-profile-area {
+  position: relative;
+}
+
+
+.doctor-profile-click {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+
+.doctor-profile-click img {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid #ec4899;
+}
+
+
+.doctor-dropdown-icon {
+  font-size: 13px;
+
+  color: #6b7280;
+}
+
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+.doctor-profile-dropdown {
+  position: absolute;
+
+  top: 58px;
+  right: 0;
+
+  width: 150px;
+
+  background-color: white;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0px 8px 22px
+    rgba(0, 0, 0, 0.12);
+
+  border: 1px solid #eef2f7;
+
+  overflow: hidden;
+
+  z-index: 100;
+}
+
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+.doctor-logout-link {
+  width: 100%;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 15px;
+
+  border: none;
+
+  background-color: transparent;
+
+  text-decoration: none;
+
+  color: #111827;
+
+  font-family: "Poppins", Arial, sans-serif;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+.doctor-logout-link:hover {
+  background-color: #fff0f7;
+
+  color: #ec4899;
+}

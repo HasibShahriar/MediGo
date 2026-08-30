@@ -1,0 +1,375 @@
+.doctor-details-page {
+  width: 92%;
+  margin: 110px auto 50px;
+}
+
+.doctor-profile-card {
+  background-color: white;
+  border-radius: 14px;
+  padding: 35px 38px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.doctor-profile-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.doctor-profile-left {
+  display: flex;
+  gap: 35px;
+}
+
+.doctor-profile-left img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: #eaf3ff;
+}
+
+.doctor-main-info h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.doctor-main-info p {
+  font-size: 16px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.working-text {
+  color: #6b7280 !important;
+}
+
+.working-text strong {
+  color: #111827;
+}
+
+/* ─────────────────────────────────────────────
+   Online / Offline Badge
+───────────────────────────────────────────── */
+
+
+/* ─────────────────────────────────────────────
+   Right Fee Area
+───────────────────────────────────────────── */
+
+.doctor-profile-right {
+  min-width: 330px;
+}
+
+.doctor-profile-right h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.doctor-profile-right h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #ec4899;
+  margin-bottom: 22px;
+}
+
+.doctor-profile-right h2 span {
+  font-size: 14px;
+  color: #4b5563;
+  margin-left: 6px;
+}
+
+.see-doctor-btn,
+.appointment-btn {
+  width: 100%;
+  height: 48px;
+
+  border: none;
+  border-radius: 25px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.appointment-btn {
+  background-color: #ec4899;
+  color: white;
+}
+
+.appointment-btn:hover {
+  background-color: #ec4899;
+  transform: translateY(-3px);
+}
+
+/* ─────────────────────────────────────────────
+   Doctor Stats
+───────────────────────────────────────────── */
+
+.doctor-stats {
+  margin-top: 35px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.doctor-stats p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.doctor-stats h4 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-icon {
+  color: #fbbf24;
+}
+
+/* ─────────────────────────────────────────────
+   Tabs
+───────────────────────────────────────────── */
+
+.doctor-tabs {
+  display: flex;
+  gap: 28px;
+  padding-top: 18px;
+}
+
+.doctor-tabs span {
+  font-size: 16px;
+  color: #6b7280;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.doctor-tabs span:hover {
+  color: #ec4899;
+}
+
+/* ─────────────────────────────────────────────
+   Details Grid
+───────────────────────────────────────────── */
+
+.doctor-details-grid {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.doctor-about-card,
+.availability-card,
+.glance-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 28px;
+
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.doctor-about-card h2,
+.availability-card h2,
+.glance-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.doctor-about-card p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────────
+   Availability
+───────────────────────────────────────────── */
+
+.doctor-side-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.availability-block {
+  border-left: 3px solid #ec4899;
+  padding-left: 14px;
+  margin-bottom: 20px;
+}
+
+.availability-block p {
+  font-size: 17px;
+  color: #6b7280;
+  margin-bottom: 7px;
+}
+
+.availability-block h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+/* ─────────────────────────────────────────────
+   At a Glance
+───────────────────────────────────────────── */
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.glance-grid div {
+  border-left: 3px solid #ec4899;
+  padding-left: 14px;
+}
+
+.glance-grid p {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.glance-grid h4 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.glance-grid h4 span {
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.glance-grid small {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #111827;
+}
+
+/* ─────────────────────────────────────────────
+   Doctor Not Found
+───────────────────────────────────────────── */
+
+.doctor-not-found {
+  margin-top: 130px;
+  text-align: center;
+  color: #ec4899;
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+
+
+.doctor-tabs span.active-tab {
+  color: #ec4899;
+  font-weight: 700;
+}
+
+.tab-content {
+  padding-top: 22px;
+}
+
+.tab-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.tab-content p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .doctor-profile-top {
+    flex-direction: column;
+  }
+
+  .doctor-profile-right {
+    min-width: 100%;
+  }
+
+  .doctor-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .doctor-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .doctor-details-page {
+    width: 94%;
+    margin-top: 100px;
+  }
+
+  .doctor-profile-card {
+    padding: 25px;
+  }
+
+  .doctor-profile-left {
+    flex-direction: column;
+  }
+
+  .doctor-profile-left img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .doctor-main-info h1 {
+    font-size: 22px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .doctor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-tabs {
+    flex-wrap: wrap;
+  }
+
+  .glance-grid {
+    grid-template-columns: 1fr;
+  }
+}

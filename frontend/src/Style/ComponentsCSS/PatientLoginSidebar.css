@@ -1,0 +1,80 @@
+.patient-login-sidebar {
+  width: 50%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #2f8fbd;
+  color: white;
+}
+
+.patient-login-sidebar img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.patient-sidebar-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0) 35%,
+  rgba(244, 114, 182, 0.68) 70%,
+  rgba(236, 72, 153, 0.95) 100%
+);
+}
+
+.patient-sidebar-content {
+  position: absolute;
+  left: 70px;
+  bottom: 85px;
+  z-index: 2;
+}
+
+.patient-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.patient-logo-icon {
+  width: 46px;
+  height: 24px;
+  border: 4px solid white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.patient-logo-icon::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #ec4899;
+  border-radius: 50%;
+
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.patient-sidebar-logo h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+}
+
+.patient-sidebar-content p {
+  font-size: 17px;
+  line-height: 1.5;
+  color: white;
+  margin: 0;
+}
