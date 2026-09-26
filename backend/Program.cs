@@ -4,52 +4,96 @@ using Microsoft.Extensions.FileProviders;
 
 using Server.Data;
 using Server.Models;
+using Server.Services;
 
 
-var builder = WebApplication.CreateBuilder(args);
+var builder =
+    WebApplication.CreateBuilder(args);
 
 
 // =====================================================
-// SERVICES
+// CONTROLLERS
 // =====================================================
 
 builder.Services.AddControllers();
 
 
 // =====================================================
+// HTTP CLIENT
+//
+// Required for:
+// PaymentController
+// SSLCOMMERZ API communication
+// =====================================================
+
+builder.Services.AddHttpClient();
+
+
+// =====================================================
+// EMAIL SERVICE
+//
+// Required for:
+// Patient password recovery
+// Doctor password recovery
+//
+// IEmailService:
+// Services/IEmailService.cs
+//
+// EmailService:
+// Services/EmailService.cs
+// =====================================================
+
+builder.Services.AddScoped<
+    IEmailService,
+    EmailService
+>();
+
+
+// =====================================================
 // DATABASE
 // =====================================================
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString(
-            "DefaultConnection"
-        )
-    );
-});
+builder.Services.AddDbContext<AppDbContext>(
+    options =>
+    {
+        options.UseSqlServer(
+            builder.Configuration
+                .GetConnectionString(
+                    "DefaultConnection"
+                )
+        );
+    }
+);
 
 
 // =====================================================
 // CORS
+//
+// React:
+// http://localhost:5173
+//
+// Backend:
+// http://localhost:5138
 // =====================================================
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(
-        "AllowReact",
-        policy =>
-        {
-            policy
-                .WithOrigins(
-                    "http://localhost:5167",
-                    "http://localhost:5173"
-                )
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        }
-    );
-});
+builder.Services.AddCors(
+    options =>
+    {
+        options.AddPolicy(
+            "AllowReact",
+            policy =>
+            {
+                policy
+                    .WithOrigins(
+                        "http://localhost:5173",
+                        "http://localhost:5138"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            }
+        );
+    }
+);
 
 
 // =====================================================
@@ -64,13 +108,21 @@ var uploadsPath =
     );
 
 
-// Main uploads folder
+// =====================================================
+// CREATE MAIN UPLOAD FOLDER
+// =====================================================
+
 Directory.CreateDirectory(
     uploadsPath
 );
 
 
-// Patient images
+// =====================================================
+// PATIENT IMAGE FOLDER
+//
+// wwwroot/uploads/patients
+// =====================================================
+
 Directory.CreateDirectory(
     Path.Combine(
         uploadsPath,
@@ -79,11 +131,30 @@ Directory.CreateDirectory(
 );
 
 
-// Doctor images
+// =====================================================
+// DOCTOR IMAGE FOLDER
+//
+// wwwroot/uploads/doctors
+// =====================================================
+
 Directory.CreateDirectory(
     Path.Combine(
         uploadsPath,
         "doctors"
+    )
+);
+
+
+// =====================================================
+// MEDICINE IMAGE FOLDER
+//
+// wwwroot/uploads/medicines
+// =====================================================
+
+Directory.CreateDirectory(
+    Path.Combine(
+        uploadsPath,
+        "medicines"
     )
 );
 
@@ -105,7 +176,10 @@ var app =
 // Password is stored HASHED.
 // =====================================================
 
-using (var scope = app.Services.CreateScope())
+using (
+    var scope =
+        app.Services.CreateScope()
+)
 {
     try
     {
@@ -114,49 +188,72 @@ using (var scope = app.Services.CreateScope())
                 .GetRequiredService<AppDbContext>();
 
 
-        // Check if admin already exists
+        // =============================================
+        // CHECK ADMIN
+        // =============================================
+
         var existingAdmin =
             await context.Admins
                 .FirstOrDefaultAsync(
-                    a =>
-                        a.Email.ToLower()
-                        == "admin"
+                    admin =>
+                        admin.Email
+                            .ToLower()
+                        ==
+                        "admin"
                 );
 
 
-        // Only create once
-        if (existingAdmin == null)
+        // =============================================
+        // CREATE ADMIN ONLY ONCE
+        // =============================================
+
+        if (
+            existingAdmin ==
+            null
+        )
         {
             var admin =
                 new Admin
                 {
-                    Email = "admin",
+                    Email =
+                        "admin",
 
                     CreatedAt =
                         DateTime.Now
                 };
 
 
-            // Create password hasher
+            // =========================================
+            // PASSWORD HASHER
+            // =========================================
+
             var passwordHasher =
                 new PasswordHasher<Admin>();
 
 
-            // Hash admin123
+            // =========================================
+            // HASH PASSWORD
+            // =========================================
+
             admin.PasswordHash =
-                passwordHasher.HashPassword(
-                    admin,
-                    "admin123"
-                );
+                passwordHasher
+                    .HashPassword(
+                        admin,
+                        "admin123"
+                    );
 
 
-            // Add to database
+            // =========================================
+            // SAVE ADMIN
+            // =========================================
+
             context.Admins.Add(
                 admin
             );
 
 
-            await context.SaveChangesAsync();
+            await context
+                .SaveChangesAsync();
 
 
             Console.WriteLine(
@@ -179,6 +276,7 @@ using (var scope = app.Services.CreateScope())
                 "===================================="
             );
         }
+
         else
         {
             Console.WriteLine(
@@ -186,6 +284,7 @@ using (var scope = app.Services.CreateScope())
             );
         }
     }
+
     catch (Exception ex)
     {
         Console.WriteLine(
@@ -197,6 +296,8 @@ using (var scope = app.Services.CreateScope())
         );
 
         Console.WriteLine(
+            ex.InnerException?.Message
+            ??
             ex.Message
         );
 
@@ -209,6 +310,8 @@ using (var scope = app.Services.CreateScope())
 
 // =====================================================
 // CORS
+//
+// Must be before MapControllers.
 // =====================================================
 
 app.UseCors(
@@ -228,9 +331,11 @@ app.UseStaticFiles();
 //
 // Examples:
 //
-// http://localhost:5167/uploads/patients/photo.jpg
+// http://localhost:5138/uploads/patients/photo.jpg
 //
-// http://localhost:5167/uploads/doctors/photo.jpg
+// http://localhost:5138/uploads/doctors/photo.jpg
+//
+// http://localhost:5138/uploads/medicines/medicine.jpg
 // =====================================================
 
 app.UseStaticFiles(

@@ -135,7 +135,7 @@ function DoctorLogin() {
 
     axios
       .post(
-        "http://localhost:5167/api/Doctor/login",
+        "http://localhost:5138/api/Doctor/login",
         loginData
       )
 
