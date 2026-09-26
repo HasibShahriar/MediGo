@@ -1,10 +1,12 @@
-import "../../Style/ComponentsCSS/Nav.css";
+﻿import "../../Style/ComponentsCSS/Nav.css";
 
 import medigopic from "../../assets/medigo.png";
-import communityPic from "../../assets/community.png";
+import communityPic from "../../assets/Community.png";
 import defaultProfile from "../../assets/default_patient.png";
 
-import { FaUserDoctor } from "react-icons/fa6";
+import {
+  FaUserDoctor
+} from "react-icons/fa6";
 
 import {
   FaUserInjured,
@@ -13,7 +15,9 @@ import {
   FaSignOutAlt
 } from "react-icons/fa";
 
-import { RiAdminFill } from "react-icons/ri";
+import {
+  RiAdminFill
+} from "react-icons/ri";
 
 import {
   NavLink,
@@ -26,52 +30,160 @@ import {
 } from "react";
 
 
+const API_URL =
+  "http://localhost:5138";
+
+
 function Nav() {
 
   const navigate =
     useNavigate();
 
 
-  const [patient, setPatient] =
-    useState(null);
+  const [
+    patient,
+    setPatient
+  ] = useState(null);
 
 
 
-  // =================================================
+  // =====================================================
+  // PROFILE IMAGE URL
+  // =====================================================
+
+  function getProfileImageUrl(
+    imagePath
+  ) {
+
+    if (!imagePath) {
+
+      return defaultProfile;
+
+    }
+
+
+    if (
+      imagePath.startsWith(
+        "http://"
+      )
+
+      ||
+
+      imagePath.startsWith(
+        "https://"
+      )
+
+      ||
+
+      imagePath.startsWith(
+        "data:"
+      )
+
+      ||
+
+      imagePath.startsWith(
+        "blob:"
+      )
+    ) {
+
+      return imagePath;
+
+    }
+
+
+    const cleanPath =
+      imagePath
+        .replace(
+          /\\/g,
+          "/"
+        )
+        .replace(
+          /^\/+/,
+          ""
+        );
+
+
+    return (
+      `${API_URL}/${cleanPath}`
+    );
+
+  }
+
+
+
+  // =====================================================
   // LOAD PATIENT
-  // =================================================
+  // =====================================================
 
   useEffect(() => {
 
     function loadPatient() {
 
       const savedPatient =
-        localStorage.getItem("patient");
-
-
-      if (savedPatient) {
-
-        setPatient(
-          JSON.parse(savedPatient)
+        localStorage.getItem(
+          "patient"
         );
 
-      } else {
 
-        setPatient(null);
+      if (!savedPatient) {
+
+        setPatient(
+          null
+        );
+
+        return;
+
+      }
+
+
+      try {
+
+        const parsedPatient =
+          JSON.parse(
+            savedPatient
+          );
+
+
+        setPatient(
+          parsedPatient
+        );
+
+      }
+
+      catch (error) {
+
+        console.log(
+          "Patient localStorage error:",
+          error
+        );
+
+
+        localStorage.removeItem(
+          "patient"
+        );
+
+
+        setPatient(
+          null
+        );
 
       }
 
     }
 
 
+
     loadPatient();
 
 
-    // Listen for Settings updates
+
+    // If patient settings update
+    // name/image/etc., navbar refreshes.
     window.addEventListener(
       "patientUpdated",
       loadPatient
     );
+
 
 
     return () => {
@@ -87,9 +199,9 @@ function Nav() {
 
 
 
-  // =================================================
+  // =====================================================
   // LOGOUT
-  // =================================================
+  // =====================================================
 
   function handleLogout() {
 
@@ -98,28 +210,40 @@ function Nav() {
     );
 
 
-    setPatient(null);
+    setPatient(
+      null
+    );
 
 
     navigate(
       "/patient-login",
-      { replace: true }
+      {
+        replace: true
+      }
     );
 
   }
 
 
 
+  // =====================================================
+  // UI
+  // =====================================================
+
   return (
 
     <div>
 
+
       <nav className="medigo-navbar">
 
 
-        {/* BRAND */}
+        {/* =================================================
+            BRAND
+        ================================================= */}
 
         <div className="brand">
+
 
           <NavLink to="/">
 
@@ -131,7 +255,9 @@ function Nav() {
           </NavLink>
 
 
+
           <div className="brand-name">
+
 
             <NavLink to="/">
 
@@ -146,7 +272,10 @@ function Nav() {
             </NavLink>
 
 
-            <div className="brand-line"></div>
+
+            <div className="brand-line">
+            </div>
+
 
 
             <NavLink to="/">
@@ -159,19 +288,26 @@ function Nav() {
 
             </NavLink>
 
+
           </div>
+
 
         </div>
 
 
 
-        {/* LINKS */}
+        {/* =================================================
+            MAIN NAVIGATION
+        ================================================= */}
 
         <ul className="nav-link">
 
+
+          {/* CONSULTATION */}
+
           <li>
 
-            <NavLink to="/Consultation">
+            <NavLink to="/consultation">
 
               Consultation
 
@@ -180,16 +316,22 @@ function Nav() {
           </li>
 
 
+
+          {/* PHARMACY */}
+
           <li>
 
-            <NavLink to="/home-diagnostic">
+            <NavLink to="/pharmacy">
 
-              Home Diagnostic
+              Pharmacy
 
             </NavLink>
 
           </li>
 
+
+
+          {/* HEALTH PLAN */}
 
           <li>
 
@@ -202,12 +344,16 @@ function Nav() {
           </li>
 
 
+
+          {/* COMMUNITY */}
+
           <li className="community-menu">
 
             Community
 
 
             <div className="community-dropdown">
+
 
               <div className="community-image">
 
@@ -219,156 +365,215 @@ function Nav() {
               </div>
 
 
+
               <div className="community-text">
 
-                <p>Blogs</p>
+                <p>
+                  Blogs
+                </p>
 
-                <p>Events</p>
+                <p>
+                  Events
+                </p>
 
-                <p>Gallery</p>
+                <p>
+                  Gallery
+                </p>
 
               </div>
 
+
             </div>
 
+
           </li>
+
 
         </ul>
 
 
 
-        {/* =================================
+        {/* =================================================
             LOGGED-IN PATIENT
-        ================================= */}
+        ================================================= */}
 
-        {patient ? (
+        {
+          patient
+            ? (
 
-          <div className="patient-profile-area">
-
-
-            <img
-
-              src={
-                patient.profileImage
-                  ? `http://localhost:5138/${patient.profileImage}`
-                  : defaultProfile
-              }
-
-              alt="Patient Profile"
-
-              className="patient-profile-image"
-
-            />
+              <div className="patient-profile-area">
 
 
-            <div className="patient-profile-dropdown">
+                {/* PATIENT IMAGE */}
 
+                <img
 
-              <NavLink to="/patient-profile">
+                  src={
+                    getProfileImageUrl(
+                      patient.profileImage
+                    )
+                  }
 
-                <FaUser />
+                  alt="Patient Profile"
 
-                <span>
-                  Account
-                </span>
+                  className="patient-profile-image"
 
-              </NavLink>
+                  onError={(event) => {
+
+                    event.currentTarget.src =
+                      defaultProfile;
+
+                  }}
+
+                />
 
 
 
-              <NavLink to="/patient-settings">
+                {/* PATIENT DROPDOWN */}
 
-                <FaCog />
-
-                <span>
-                  Settings
-                </span>
-
-              </NavLink>
+                <div className="patient-profile-dropdown">
 
 
+                  {/* =========================
+                      ACCOUNT
+                  ========================= */}
 
-              <button
-                type="button"
-                onClick={handleLogout}
-              >
+                  <NavLink to="/patient-account">
 
-                <FaSignOutAlt />
+                    <FaUser />
 
-                <span>
-                  Logout
-                </span>
+                    <span>
+                      Account
+                    </span>
 
-              </button>
-
-
-            </div>
-
-          </div>
-
-        ) : (
-
-          /* =================================
-             NOT LOGGED IN
-          ================================= */
-
-          <div className="login-area">
+                  </NavLink>
 
 
-            <button
-              type="button"
-              className="login-btn"
-            >
 
-              Log in
+                  {/* =========================
+                      SETTINGS
+                  ========================= */}
 
-            </button>
+                  <NavLink to="/patient-settings">
 
+                    <FaCog />
 
-            <div className="login-dropdown">
+                    <span>
+                      Settings
+                    </span>
 
-
-              <NavLink to="/doctor-login">
-
-                <FaUserDoctor />
-
-                <span id="doc">
-                  Doctor
-                </span>
-
-              </NavLink>
+                  </NavLink>
 
 
-              <NavLink to="/patient-login">
 
-                <FaUserInjured />
+                  {/* =========================
+                      LOGOUT
+                  ========================= */}
 
-                <span id="pat">
-                  Patient
-                </span>
+                  <button
 
-              </NavLink>
+                    type="button"
+
+                    onClick={
+                      handleLogout
+                    }
+
+                  >
+
+                    <FaSignOutAlt />
+
+                    <span>
+                      Logout
+                    </span>
+
+                  </button>
 
 
-              <NavLink to="/admin-login">
-
-                <RiAdminFill />
-
-                <span id="ad">
-                  Admin
-                </span>
-
-              </NavLink>
+                </div>
 
 
-            </div>
+              </div>
 
-          </div>
+            )
 
-        )}
+            : (
+
+              /* =================================================
+                 NOT LOGGED IN
+              ================================================= */
+
+              <div className="login-area">
+
+
+                <button
+
+                  type="button"
+
+                  className="login-btn"
+
+                >
+
+                  Log in
+
+                </button>
+
+
+
+                <div className="login-dropdown">
+
+
+                  {/* DOCTOR LOGIN */}
+
+                  <NavLink to="/doctor-login">
+
+                    <FaUserDoctor />
+
+                    <span id="doc">
+                      Doctor
+                    </span>
+
+                  </NavLink>
+
+
+
+                  {/* PATIENT LOGIN */}
+
+                  <NavLink to="/patient-login">
+
+                    <FaUserInjured />
+
+                    <span id="pat">
+                      Patient
+                    </span>
+
+                  </NavLink>
+
+
+
+                  {/* ADMIN LOGIN */}
+
+                  <NavLink to="/admin-login">
+
+                    <RiAdminFill />
+
+                    <span id="ad">
+                      Admin
+                    </span>
+
+                  </NavLink>
+
+
+                </div>
+
+
+              </div>
+
+            )
+        }
 
 
       </nav>
+
 
     </div>
 

@@ -1,0 +1,2941 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+.patient-account-page {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8fc 0%,
+      #ffffff 48%,
+      #eef5ff 100%
+    );
+
+  color: #111827;
+}
+
+
+.patient-account-main {
+  width: min(1450px, 94%);
+
+  margin: 0 auto;
+
+  padding-top: 110px;
+  padding-bottom: 35px;
+
+  display: grid;
+
+  grid-template-columns:
+    310px minmax(0, 1fr);
+
+  gap: 24px;
+}
+
+
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.pa-sidebar {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.pa-profile-card {
+  padding: 30px 22px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fff8fc
+    );
+
+  border:
+    1px solid #efdce7;
+
+  box-shadow:
+    0 12px 35px
+    rgba(17, 24, 39, 0.06);
+
+  text-align: center;
+}
+
+
+.pa-profile-image {
+  width: 115px;
+  height: 115px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 38px;
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  border:
+    5px solid #ffffff;
+
+  box-shadow:
+    0 10px 28px
+    rgba(236, 72, 153, 0.22);
+}
+
+
+.pa-profile-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.pa-profile-card h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+
+.pa-profile-card p {
+  margin: 7px 0 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  word-break: break-word;
+}
+
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.pa-menu {
+  margin-top: 20px;
+
+  padding: 16px;
+
+  border-radius: 20px;
+
+  background: white;
+
+  border:
+    1px solid #e9edf5;
+
+  box-shadow:
+    0 12px 35px
+    rgba(17, 24, 39, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.pa-menu-item {
+  width: 100%;
+
+  min-height: 55px;
+
+  padding: 0 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: transparent;
+
+  color: #4b5563;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.pa-menu-item > div {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+.pa-menu-icon {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+}
+
+
+.pa-menu-count {
+  min-width: 27px;
+  height: 27px;
+
+  padding: 0 7px;
+
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef2f7;
+
+  color: #6b7280;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+.pa-menu-item:hover {
+  background: #fff7fb;
+
+  color: #ec4899;
+}
+
+
+.pa-menu-item.active {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 9px 20px
+    rgba(236, 72, 153, 0.18);
+}
+
+
+.pa-menu-item.active
+.pa-menu-icon {
+  color: white;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+}
+
+
+.pa-menu-item.active
+.pa-menu-count {
+  color: white;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+}
+
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.pa-content {
+  min-width: 0;
+}
+
+
+.pa-content-header {
+  min-height: 150px;
+
+  padding: 28px 30px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fff8fc 55%,
+      #eef5ff 100%
+    );
+
+  border:
+    1px solid #eadfe7;
+
+  box-shadow:
+    0 12px 35px
+    rgba(17, 24, 39, 0.05);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+
+.pa-eyebrow {
+  margin: 0 0 7px;
+
+  color: #ec4899;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.pa-content-header h1 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 30px;
+  font-weight: 800;
+}
+
+
+.pa-content-description {
+  max-width: 670px;
+
+  margin: 8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.pa-account-summary {
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+.pa-account-summary div {
+  padding: 11px 14px;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  background: white;
+
+  border:
+    1px solid #e8eaf1;
+
+  color: #4b5563;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.pa-account-summary svg {
+  color: #ec4899;
+}
+
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.pa-content-body {
+  min-height: 550px;
+
+  margin-top: 20px;
+
+  padding: 23px;
+
+  border-radius: 20px;
+
+  background: white;
+
+  border:
+    1px solid #e9edf5;
+
+  box-shadow:
+    0 12px 35px
+    rgba(17, 24, 39, 0.05);
+}
+
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.pa-empty {
+  min-height: 490px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.pa-empty-icon {
+  width: 78px;
+  height: 78px;
+
+  border-radius: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ec4899;
+
+  font-size: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eef4ff
+    );
+}
+
+
+.pa-empty h2 {
+  margin:
+    18px 0 0;
+
+  font-size: 21px;
+
+  color: #111827;
+}
+
+
+.pa-empty p {
+  max-width: 430px;
+
+  margin:
+    8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.pa-empty button {
+  margin-top: 20px;
+
+  height: 43px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.pa-cart-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    310px;
+
+  gap: 20px;
+}
+
+
+.pa-cart-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+.pa-cart-card {
+  padding: 17px;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  gap: 16px;
+
+  border:
+    1px solid #ebe9ef;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f9fbff
+    );
+
+  transition: 0.25s ease;
+}
+
+
+.pa-cart-card:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 24px
+    rgba(17, 24, 39, 0.06);
+}
+
+
+.pa-cart-image {
+  width: 105px;
+  height: 105px;
+
+  min-width: 105px;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ec4899;
+
+  font-size: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #edf4ff
+    );
+}
+
+
+.pa-cart-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.pa-cart-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.pa-cart-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.pa-cart-heading h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 17px;
+}
+
+
+.pa-cart-heading h3 span {
+  color: #ec4899;
+
+  font-size: 13px;
+}
+
+
+.pa-generic {
+  margin:
+    5px 0 0;
+
+  color: #4b5563;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+.pa-manufacturer {
+  margin:
+    4px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+}
+
+
+.pa-delete-btn {
+  height: 36px;
+
+  padding: 0 11px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #dc2626;
+
+  background: #fee2e2;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.pa-delete-btn:hover {
+  color: white;
+
+  background: #dc2626;
+}
+
+
+.pa-cart-tags {
+  margin-top: 13px;
+
+  display: flex;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+}
+
+
+.pa-cart-tags span {
+  padding: 5px 8px;
+
+  border-radius: 7px;
+
+  color: #64748b;
+
+  background: #f8fafc;
+
+  border:
+    1px solid #edf1f6;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+.pa-cart-tags
+.prescription {
+  color: #7c3aed;
+
+  background: #f3e8ff;
+
+  border-color: #ead7ff;
+}
+
+
+.pa-cart-price-row {
+  margin-top: 15px;
+
+  padding-top: 13px;
+
+  border-top:
+    1px solid #edf1f6;
+
+  display: flex;
+
+  gap: 35px;
+}
+
+
+.pa-cart-price-row div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.pa-cart-price-row small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.pa-cart-price-row strong {
+  color: #db2777;
+
+  font-size: 16px;
+}
+
+
+
+/* =========================================================
+   CONFIRM ORDER BOX
+========================================================= */
+
+.pa-order-summary {
+  height: fit-content;
+
+  padding: 22px;
+
+  border-radius: 17px;
+
+  position: sticky;
+
+  top: 105px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff6fb,
+      #f4f2ff
+    );
+
+  border:
+    1px solid #efd9e7;
+
+  box-shadow:
+    0 11px 27px
+    rgba(236, 72, 153, 0.09);
+}
+
+
+.pa-order-summary-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+}
+
+
+.pa-order-summary h2 {
+  margin:
+    16px 0 0;
+
+  color: #111827;
+
+  font-size: 21px;
+}
+
+
+.pa-summary-text {
+  margin:
+    8px 0 20px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+.pa-summary-line,
+.pa-summary-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: 12px;
+}
+
+
+.pa-summary-line span {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+.pa-summary-line strong {
+  color: #111827;
+
+  font-size: 14px;
+}
+
+
+.pa-summary-divider {
+  height: 1px;
+
+  margin:
+    18px 0;
+
+  background: #e8dce5;
+}
+
+
+.pa-summary-total span {
+  color: #111827;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+.pa-summary-total strong {
+  color: #db2777;
+
+  font-size: 21px;
+}
+
+
+.pa-confirm-order-btn {
+  width: 100%;
+  height: 46px;
+
+  margin-top: 20px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.pa-confirm-order-btn:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(236, 72, 153, 0.24);
+}
+
+
+.pa-confirm-order-btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+.pa-order-note {
+  display: block;
+
+  margin-top: 13px;
+
+  color: #8b7280;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+
+/* =========================================================
+   REQUEST GRID
+========================================================= */
+
+.pa-request-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 16px;
+}
+
+
+.pa-request-card {
+  padding: 19px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid #ebe9ef;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f8fbff
+    );
+}
+
+
+.pa-request-doctor {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.pa-small-avatar {
+  width: 52px;
+  height: 52px;
+
+  min-width: 52px;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+}
+
+
+.pa-small-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.pa-request-doctor h3 {
+  margin: 0;
+
+  font-size: 16px;
+
+  color: #111827;
+}
+
+
+.pa-request-doctor p {
+  margin:
+    4px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.pa-request-details {
+  margin:
+    17px 0;
+
+  padding:
+    11px 12px;
+
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #f8fafc;
+}
+
+
+.pa-request-details span {
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+.pa-request-details strong {
+  font-size: 12px;
+
+  color: #111827;
+}
+
+
+
+/* =========================================================
+   APPOINTMENT
+========================================================= */
+
+.pa-appointment-info {
+  margin:
+    17px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 9px;
+}
+
+
+.pa-appointment-info div {
+  padding: 10px;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+}
+
+
+.pa-appointment-info small,
+.pa-appointment-info strong {
+  display: block;
+}
+
+
+.pa-appointment-info small {
+  color: #9ca3af;
+
+  font-size: 9px;
+}
+
+
+.pa-appointment-info strong {
+  margin-top: 4px;
+
+  color: #111827;
+
+  font-size: 12px;
+}
+
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.pa-status {
+  width: fit-content;
+
+  padding:
+    6px 11px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: capitalize;
+}
+
+
+.pa-status.success {
+  color: #15803d;
+
+  background: #dcfce7;
+}
+
+
+.pa-status.pending {
+  color: #b45309;
+
+  background: #fef3c7;
+}
+
+
+.pa-status.danger {
+  color: #dc2626;
+
+  background: #fee2e2;
+}
+
+
+
+/* =========================================================
+   REPORT LIST
+========================================================= */
+
+.pa-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+
+.pa-list-card {
+  padding: 17px;
+
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  border:
+    1px solid #ebe9ef;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f9fbff
+    );
+}
+
+
+.pa-list-number {
+  width: 40px;
+  height: 40px;
+
+  min-width: 40px;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+.pa-list-main {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.pa-list-main h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 15px;
+}
+
+
+.pa-list-main p {
+  margin:
+    5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+.pa-list-main small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+
+/* =========================================================
+   ORDER HISTORY
+========================================================= */
+
+.pa-order-history {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+
+.pa-history-card {
+  padding: 17px;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  gap: 14px;
+
+  border:
+    1px solid #ebe9ef;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f8fbff
+    );
+}
+
+
+.pa-history-number {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  font-weight: 800;
+}
+
+
+.pa-history-main {
+  flex: 1;
+}
+
+
+.pa-history-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.pa-history-heading h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 16px;
+}
+
+
+.pa-history-heading p {
+  margin:
+    4px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.pa-history-info {
+  margin-top: 14px;
+
+  padding-top: 12px;
+
+  border-top:
+    1px solid #edf1f6;
+
+  display: flex;
+
+  gap: 40px;
+}
+
+
+.pa-history-info div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.pa-history-info small {
+  color: #9ca3af;
+
+  font-size: 9px;
+}
+
+
+.pa-history-info strong {
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.pa-loading {
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+}
+
+
+.pa-loader {
+  width: 37px;
+  height: 37px;
+
+  margin-bottom: 12px;
+
+  border:
+    3px solid #f1d6e4;
+
+  border-top-color:
+    #ec4899;
+
+  border-radius: 50%;
+
+  animation:
+    paSpin
+    0.8s
+    linear
+    infinite;
+}
+
+
+@keyframes paSpin {
+
+  to {
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (
+  max-width: 1150px
+) {
+
+  .patient-account-main {
+
+    grid-template-columns:
+      270px minmax(0, 1fr);
+
+  }
+
+
+  .pa-cart-layout {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .pa-order-summary {
+
+    position: static;
+
+  }
+
+}
+
+
+@media (
+  max-width: 850px
+) {
+
+  .patient-account-main {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .pa-content-header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+
+  .pa-request-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+@media (
+  max-width: 600px
+) {
+
+  .patient-account-main {
+
+    width: 94%;
+
+  }
+
+
+  .pa-content-body {
+
+    padding: 15px;
+
+  }
+
+
+  .pa-cart-card {
+
+    flex-direction: column;
+
+  }
+
+
+  .pa-cart-heading {
+
+    flex-direction: column;
+
+  }
+
+
+  .pa-history-heading {
+
+    flex-direction: column;
+
+  }
+
+}
+
+
+/* =========================================================
+   PAYMENT / ORDER HISTORY
+========================================================= */
+
+.pa-order-status-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+
+
+.pa-ordered-items {
+  margin-top: 18px;
+
+  padding: 16px;
+
+  border-radius: 13px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf1f6;
+}
+
+
+
+.pa-ordered-items h4 {
+  margin: 0 0 13px;
+
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+
+.pa-ordered-item {
+  padding: 12px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+
+.pa-ordered-item:last-child {
+  border-bottom: none;
+}
+
+
+
+.pa-ordered-item-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+
+.pa-order-medicine-icon {
+  width: 40px;
+
+  height: 40px;
+
+  min-width: 40px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+}
+
+
+
+.pa-ordered-item-info strong {
+  display: block;
+
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+
+.pa-ordered-item-info p {
+  margin: 3px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+
+.pa-order-item-calculation {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+}
+
+
+
+.pa-order-item-calculation span {
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+
+.pa-order-item-calculation strong {
+  color: #db2777;
+
+  font-size: 14px;
+}
+
+
+
+.pa-transaction-id {
+  max-width: 210px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 10px !important;
+}
+
+
+
+@media (max-width: 600px) {
+
+  .pa-ordered-item {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .pa-order-item-calculation {
+    width: 100%;
+
+    align-items: flex-start;
+  }
+
+
+  .pa-order-status-box {
+    margin-top: 8px;
+  }
+
+}
+
+
+
+/* =========================================================
+   PAYMENT / ORDER HISTORY
+========================================================= */
+
+.pa-order-status-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+
+
+.pa-ordered-items {
+  margin-top: 18px;
+
+  padding: 16px;
+
+  border-radius: 13px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf1f6;
+}
+
+
+
+.pa-ordered-items h4 {
+  margin: 0 0 13px;
+
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+
+.pa-ordered-item {
+  padding: 12px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+
+.pa-ordered-item:last-child {
+  border-bottom: none;
+}
+
+
+
+.pa-ordered-item-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+
+.pa-order-medicine-icon {
+  width: 40px;
+
+  height: 40px;
+
+  min-width: 40px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+}
+
+
+
+.pa-ordered-item-info strong {
+  display: block;
+
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+
+.pa-ordered-item-info p {
+  margin: 3px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+
+.pa-order-item-calculation {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+}
+
+
+
+.pa-order-item-calculation span {
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+
+.pa-order-item-calculation strong {
+  color: #db2777;
+
+  font-size: 14px;
+}
+
+
+
+.pa-transaction-id {
+  max-width: 210px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 10px !important;
+}
+
+
+
+@media (max-width: 600px) {
+
+  .pa-ordered-item {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .pa-order-item-calculation {
+    width: 100%;
+
+    align-items: flex-start;
+  }
+
+
+  .pa-order-status-box {
+    margin-top: 8px;
+  }
+
+}
+
+/* =========================================================
+   DOCTOR REQUESTS
+========================================================= */
+
+.pa-doctor-request-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+.pa-doctor-request-card {
+  padding: 20px;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #edf0f5;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+.pa-doctor-request-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.pa-request-doctor-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+
+.pa-request-doctor-info img,
+.pa-request-doctor-placeholder {
+  width: 58px;
+
+  height: 58px;
+
+  min-width: 58px;
+
+  border-radius: 50%;
+}
+
+
+.pa-request-doctor-info img {
+  object-fit: cover;
+}
+
+
+.pa-request-doctor-placeholder {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+
+  font-size: 22px;
+}
+
+
+.pa-request-doctor-info h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 16px;
+}
+
+
+.pa-request-doctor-info p {
+  margin: 4px 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.pa-request-doctor-info span {
+  color: #db2777;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.pa-request-status {
+  padding: 7px 11px;
+
+  border-radius: 100px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+
+.pa-request-status.pending {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+
+.pa-request-status.approved {
+  background: #ecfdf5;
+
+  color: #16a34a;
+}
+
+
+.pa-request-status.rejected {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+
+.pa-request-payment {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+}
+
+
+.pa-request-payment > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.pa-request-payment small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.pa-request-payment strong {
+  color: #111827;
+
+  font-size: 14px;
+}
+
+
+.paid-text {
+  color: #16a34a;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+.later-text {
+  color: #9333ea;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+.pa-pending-note,
+.pa-rejected-note {
+  margin-top: 15px;
+
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 12px;
+}
+
+
+.pa-pending-note {
+  background: #fff7ed;
+
+  color: #c2410c;
+}
+
+
+.pa-rejected-note {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+
+.pa-approved-appointment {
+  margin-top: 16px;
+
+  padding: 15px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 12px;
+}
+
+
+.pa-approved-appointment small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #6b7280;
+
+  font-size: 10px;
+}
+
+
+.pa-approved-appointment strong {
+  color: #111827;
+
+  font-size: 12px;
+}
+
+
+.pa-doctor-comment {
+  grid-column:
+    1 / -1;
+}
+
+
+@media (max-width: 700px) {
+
+  .pa-doctor-request-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .pa-request-payment {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .pa-approved-appointment {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+/* =========================================================
+   APPOINTMENT / DOCTOR REQUEST
+========================================================= */
+
+.pa-doctor-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pa-doctor-request-card {
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #edf0f5;
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   DOCTOR
+========================================================= */
+
+.pa-doctor-request-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.pa-request-doctor-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.pa-request-doctor-info img,
+.pa-request-doctor-placeholder {
+  width: 58px;
+  height: 58px;
+
+  min-width: 58px;
+
+  border-radius: 50%;
+}
+
+.pa-request-doctor-info img {
+  object-fit: cover;
+}
+
+.pa-request-doctor-placeholder {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+
+  font-size: 22px;
+}
+
+.pa-request-doctor-info h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 16px;
+}
+
+.pa-request-doctor-info p {
+  margin: 4px 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+.pa-request-doctor-info span {
+  color: #db2777;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   REQUEST STATUS
+========================================================= */
+
+.pa-request-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 7px 11px;
+
+  border-radius: 100px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.pa-request-status.pending {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+.pa-request-status.approved {
+  background: #ecfdf5;
+
+  color: #16a34a;
+}
+
+.pa-request-status.rejected {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   PAYMENT INFORMATION
+========================================================= */
+
+.pa-request-payment {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+}
+
+.pa-request-payment > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.pa-request-payment small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+.pa-request-payment strong {
+  color: #111827;
+
+  font-size: 14px;
+}
+
+.paid-text {
+  color: #16a34a;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+.later-text {
+  color: #9333ea;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PENDING
+========================================================= */
+
+.pa-pending-note {
+  margin-top: 15px;
+
+  padding: 11px 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: #fff7ed;
+
+  color: #c2410c;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   APPROVED
+========================================================= */
+
+.pa-approved-appointment {
+  margin-top: 16px;
+
+  padding: 15px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 12px;
+}
+
+.pa-approved-appointment small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #6b7280;
+
+  font-size: 10px;
+}
+
+.pa-approved-appointment strong {
+  color: #111827;
+
+  font-size: 12px;
+}
+
+.pa-doctor-comment {
+  grid-column:
+    1 / -1;
+}
+
+
+/* =========================================================
+   REJECTED
+========================================================= */
+
+.pa-rejected-note {
+  margin-top: 15px;
+
+  padding: 11px 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .pa-doctor-request-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .pa-request-payment {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .pa-approved-appointment {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+/* =========================================================
+   DOCTOR / APPOINTMENT REQUEST
+========================================================= */
+
+.pa-doctor-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pa-doctor-request-card {
+  padding: 20px;
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.pa-doctor-request-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.pa-request-doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.pa-request-doctor-info img,
+.pa-request-doctor-placeholder {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  border-radius: 50%;
+}
+
+.pa-request-doctor-info img {
+  object-fit: cover;
+}
+
+.pa-request-doctor-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff0f7;
+  color: #ec4899;
+  font-size: 22px;
+}
+
+.pa-request-doctor-info h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 16px;
+}
+
+.pa-request-doctor-info p {
+  margin: 4px 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.pa-request-doctor-info span {
+  color: #db2777;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pa-request-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 11px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.pa-request-status.pending {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.pa-request-status.approved {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.pa-request-status.rejected {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.pa-request-payment {
+  margin-top: 18px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.pa-request-payment > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pa-request-payment small {
+  color: #9ca3af;
+  font-size: 10px;
+}
+
+.pa-request-payment strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.paid-text {
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.later-text {
+  color: #9333ea;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.pa-pending-note,
+.pa-rejected-note {
+  margin-top: 15px;
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.pa-pending-note {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.pa-rejected-note {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.pa-approved-appointment {
+  margin-top: 16px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+}
+
+.pa-approved-appointment small {
+  display: block;
+  margin-bottom: 4px;
+  color: #6b7280;
+  font-size: 10px;
+}
+
+.pa-approved-appointment strong {
+  color: #111827;
+  font-size: 12px;
+}
+
+.pa-doctor-comment {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   REPORTS SENT
+========================================================= */
+
+.pa-report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pa-report-card {
+  padding: 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+.pa-report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.pa-report-header h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 16px;
+}
+
+.pa-report-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.pa-report-sent-badge {
+  padding: 6px 11px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pa-report-message {
+  padding: 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.pa-report-message small {
+  color: #9ca3af;
+  font-size: 10px;
+}
+
+.pa-report-message p {
+  margin: 6px 0 0;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.pa-report-user-info {
+  margin-top: 14px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+
+@media (max-width: 700px) {
+
+  .pa-doctor-request-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pa-request-payment {
+    grid-template-columns: 1fr;
+  }
+
+  .pa-approved-appointment {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   REPORTS SENT
+========================================================= */
+
+.pa-report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.pa-report-card {
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+
+.pa-report-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+.pa-report-header h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 16px;
+}
+
+
+.pa-report-header p {
+  margin: 5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.pa-report-sent-badge {
+  padding: 6px 11px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.pa-report-read-badge {
+  padding: 6px 11px;
+
+  background: #ecfdf5;
+
+  color: #16a34a;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.pa-report-message {
+  padding: 14px;
+
+  background: #f8fafc;
+
+  border-radius: 10px;
+}
+
+
+.pa-report-message small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.pa-report-message p {
+  margin: 6px 0 0;
+
+  color: #374151;
+
+  line-height: 1.6;
+}
+
+
+.pa-report-user-info {
+  margin-top: 14px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}

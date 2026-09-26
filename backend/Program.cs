@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+
+using System.Threading.RateLimiting;
 
 using Server.Data;
 using Server.Models;
@@ -19,11 +22,11 @@ builder.Services.AddControllers();
 
 
 // =====================================================
-// HTTP CLIENT
+// GENERAL HTTP CLIENT
 //
-// Required for:
-// PaymentController
-// SSLCOMMERZ API communication
+// Used by:
+// - SSLCOMMERZ
+// - other external API calls
 // =====================================================
 
 builder.Services.AddHttpClient();
@@ -31,22 +34,68 @@ builder.Services.AddHttpClient();
 
 // =====================================================
 // EMAIL SERVICE
-//
-// Required for:
-// Patient password recovery
-// Doctor password recovery
-//
-// IEmailService:
-// Services/IEmailService.cs
-//
-// EmailService:
-// Services/EmailService.cs
 // =====================================================
 
 builder.Services.AddScoped<
     IEmailService,
     EmailService
 >();
+
+
+// =====================================================
+// GEMINI AI DOCTOR FINDER
+// =====================================================
+
+builder.Services.AddHttpClient<
+    IAiDoctorService,
+    AiDoctorService
+>();
+
+
+// =====================================================
+// AI RATE LIMITING
+//
+// Maximum:
+// 10 AI requests per IP per minute
+// =====================================================
+
+builder.Services.AddRateLimiter(
+    options =>
+    {
+        options.RejectionStatusCode =
+            StatusCodes.Status429TooManyRequests;
+
+
+        options.AddPolicy(
+            "ai",
+            httpContext =>
+                RateLimitPartition
+                    .GetFixedWindowLimiter(
+                        partitionKey:
+                            httpContext
+                                .Connection
+                                .RemoteIpAddress
+                                ?.ToString()
+                            ??
+                            "unknown",
+
+                        factory:
+                            _ =>
+                                new FixedWindowRateLimiterOptions
+                                {
+                                    PermitLimit = 10,
+
+                                    Window =
+                                        TimeSpan.FromMinutes(1),
+
+                                    QueueLimit = 0,
+
+                                    AutoReplenishment = true
+                                }
+                    )
+        );
+    }
+);
 
 
 // =====================================================
@@ -67,13 +116,59 @@ builder.Services.AddDbContext<AppDbContext>(
 
 
 // =====================================================
-// CORS
+// FRONTEND URL
 //
-// React:
+// LOCAL:
 // http://localhost:5173
 //
-// Backend:
-// http://localhost:5138
+// PRODUCTION:
+// Value will come from Azure environment variable:
+// FrontendUrl
+// =====================================================
+
+var frontendUrl =
+    builder.Configuration["FrontendUrl"]
+    ??
+    "http://localhost:5173";
+
+
+frontendUrl =
+    frontendUrl.TrimEnd('/');
+
+
+// =====================================================
+// CORS ORIGINS
+// =====================================================
+
+var allowedOrigins =
+    new List<string>
+    {
+        "http://localhost:5173"
+    };
+
+
+if (
+    !string.IsNullOrWhiteSpace(
+        frontendUrl
+    )
+    &&
+    !allowedOrigins.Any(
+        origin =>
+            origin.Equals(
+                frontendUrl,
+                StringComparison.OrdinalIgnoreCase
+            )
+    )
+)
+{
+    allowedOrigins.Add(
+        frontendUrl
+    );
+}
+
+
+// =====================================================
+// CORS
 // =====================================================
 
 builder.Services.AddCors(
@@ -81,12 +176,12 @@ builder.Services.AddCors(
     {
         options.AddPolicy(
             "AllowReact",
+
             policy =>
             {
                 policy
                     .WithOrigins(
-                        "http://localhost:5173",
-                        "http://localhost:5138"
+                        allowedOrigins.ToArray()
                     )
                     .AllowAnyHeader()
                     .AllowAnyMethod();
@@ -97,10 +192,20 @@ builder.Services.AddCors(
 
 
 // =====================================================
-// UPLOAD DIRECTORY
+// UPLOAD DIRECTORIES
+//
+// LOCAL:
+// backend/wwwroot/uploads
+//
+// AZURE:
+// HOME/data/uploads
+//
+// Azure production storage is separated from the
+// deployed application files so uploaded pictures are
+// not lost every time the application is redeployed.
 // =====================================================
 
-var uploadsPath =
+var bundledUploadsPath =
     Path.Combine(
         builder.Environment.ContentRootPath,
         "wwwroot",
@@ -108,20 +213,54 @@ var uploadsPath =
     );
 
 
+var azureHomeDirectory =
+    Environment.GetEnvironmentVariable(
+        "HOME"
+    );
+
+
+string uploadsPath;
+
+
+if (
+    builder.Environment.IsDevelopment()
+    ||
+    string.IsNullOrWhiteSpace(
+        azureHomeDirectory
+    )
+)
+{
+    // =============================================
+    // LOCAL DEVELOPMENT
+    // =============================================
+
+    uploadsPath =
+        bundledUploadsPath;
+}
+
+else
+{
+    // =============================================
+    // AZURE PRODUCTION
+    // =============================================
+
+    uploadsPath =
+        Path.Combine(
+            azureHomeDirectory,
+            "data",
+            "uploads"
+        );
+}
+
+
 // =====================================================
-// CREATE MAIN UPLOAD FOLDER
+// CREATE UPLOAD FOLDERS
 // =====================================================
 
 Directory.CreateDirectory(
     uploadsPath
 );
 
-
-// =====================================================
-// PATIENT IMAGE FOLDER
-//
-// wwwroot/uploads/patients
-// =====================================================
 
 Directory.CreateDirectory(
     Path.Combine(
@@ -131,12 +270,6 @@ Directory.CreateDirectory(
 );
 
 
-// =====================================================
-// DOCTOR IMAGE FOLDER
-//
-// wwwroot/uploads/doctors
-// =====================================================
-
 Directory.CreateDirectory(
     Path.Combine(
         uploadsPath,
@@ -145,18 +278,45 @@ Directory.CreateDirectory(
 );
 
 
-// =====================================================
-// MEDICINE IMAGE FOLDER
-//
-// wwwroot/uploads/medicines
-// =====================================================
-
 Directory.CreateDirectory(
     Path.Combine(
         uploadsPath,
         "medicines"
     )
 );
+
+
+// =====================================================
+// COPY EXISTING BUNDLED IMAGES TO AZURE STORAGE
+//
+// Only copies files that are not already present.
+//
+// This helps preserve doctor/medicine demo images
+// shipped with your project.
+// =====================================================
+
+if (
+    !builder.Environment.IsDevelopment()
+    &&
+    Directory.Exists(
+        bundledUploadsPath
+    )
+    &&
+    !Path.GetFullPath(
+        bundledUploadsPath
+    ).Equals(
+        Path.GetFullPath(
+            uploadsPath
+        ),
+        StringComparison.OrdinalIgnoreCase
+    )
+)
+{
+    CopyMissingFiles(
+        bundledUploadsPath,
+        uploadsPath
+    );
+}
 
 
 // =====================================================
@@ -168,12 +328,55 @@ var app =
 
 
 // =====================================================
+// DEFAULT ADMIN SETTINGS
+//
+// Development fallback:
+// Username = admin
+// Password = admin123
+//
+// Production:
+//
+// DefaultAdmin__Username
+// DefaultAdmin__Password
+//
+// must be configured in Azure.
+//
+// DO NOT expose the production admin password.
+// =====================================================
+
+var defaultAdminUsername =
+    builder.Configuration[
+        "DefaultAdmin:Username"
+    ]
+    ??
+    "admin";
+
+
+var defaultAdminPassword =
+    builder.Configuration[
+        "DefaultAdmin:Password"
+    ];
+
+
+// =====================================================
+// LOCAL DEVELOPMENT PASSWORD
+// =====================================================
+
+if (
+    builder.Environment.IsDevelopment()
+    &&
+    string.IsNullOrWhiteSpace(
+        defaultAdminPassword
+    )
+)
+{
+    defaultAdminPassword =
+        "admin123";
+}
+
+
+// =====================================================
 // CREATE DEFAULT ADMIN
-//
-// Username: admin
-// Password: admin123
-//
-// Password is stored HASHED.
 // =====================================================
 
 using (
@@ -188,10 +391,6 @@ using (
                 .GetRequiredService<AppDbContext>();
 
 
-        // =============================================
-        // CHECK ADMIN
-        // =============================================
-
         var existingAdmin =
             await context.Admins
                 .FirstOrDefaultAsync(
@@ -199,53 +398,48 @@ using (
                         admin.Email
                             .ToLower()
                         ==
-                        "admin"
+                        defaultAdminUsername
+                            .ToLower()
                 );
 
 
         // =============================================
-        // CREATE ADMIN ONLY ONCE
+        // CREATE ONLY IF:
+        //
+        // 1. Admin doesn't exist
+        // 2. Password is configured
         // =============================================
 
         if (
-            existingAdmin ==
-            null
+            existingAdmin == null
+            &&
+            !string.IsNullOrWhiteSpace(
+                defaultAdminPassword
+            )
         )
         {
             var admin =
                 new Admin
                 {
                     Email =
-                        "admin",
+                        defaultAdminUsername,
 
                     CreatedAt =
                         DateTime.Now
                 };
 
 
-            // =========================================
-            // PASSWORD HASHER
-            // =========================================
-
             var passwordHasher =
                 new PasswordHasher<Admin>();
 
-
-            // =========================================
-            // HASH PASSWORD
-            // =========================================
 
             admin.PasswordHash =
                 passwordHasher
                     .HashPassword(
                         admin,
-                        "admin123"
+                        defaultAdminPassword
                     );
 
-
-            // =========================================
-            // SAVE ADMIN
-            // =========================================
 
             context.Admins.Add(
                 admin
@@ -261,15 +455,7 @@ using (
             );
 
             Console.WriteLine(
-                "Default MediGo Admin Created"
-            );
-
-            Console.WriteLine(
-                "Username: admin"
-            );
-
-            Console.WriteLine(
-                "Password: admin123"
+                "Default MediGo admin created."
             );
 
             Console.WriteLine(
@@ -277,15 +463,26 @@ using (
             );
         }
 
-        else
+        else if (
+            existingAdmin != null
+        )
         {
             Console.WriteLine(
                 "MediGo admin already exists."
             );
         }
+
+        else
+        {
+            Console.WriteLine(
+                "Default admin was not created because no production password was configured."
+            );
+        }
     }
 
-    catch (Exception ex)
+    catch (
+        Exception ex
+    )
     {
         Console.WriteLine(
             "===================================="
@@ -310,8 +507,6 @@ using (
 
 // =====================================================
 // CORS
-//
-// Must be before MapControllers.
 // =====================================================
 
 app.UseCors(
@@ -320,22 +515,20 @@ app.UseCors(
 
 
 // =====================================================
-// NORMAL WWWROOT STATIC FILES
+// NORMAL STATIC FILES
+//
+// Used for files bundled inside wwwroot.
 // =====================================================
 
 app.UseStaticFiles();
 
 
 // =====================================================
-// EXPLICITLY SERVE /uploads
+// SERVE PERSISTENT UPLOADS
 //
-// Examples:
+// Example:
 //
-// http://localhost:5138/uploads/patients/photo.jpg
-//
-// http://localhost:5138/uploads/doctors/photo.jpg
-//
-// http://localhost:5138/uploads/medicines/medicine.jpg
+// https://backend-domain/uploads/doctors/image.jpg
 // =====================================================
 
 app.UseStaticFiles(
@@ -353,7 +546,40 @@ app.UseStaticFiles(
 
 
 // =====================================================
-// MAP API CONTROLLERS
+// RATE LIMITING
+// =====================================================
+
+app.UseRateLimiter();
+
+
+// =====================================================
+// SIMPLE API HEALTH CHECK
+//
+// Open the backend URL in a browser.
+//
+// Example:
+//
+// https://your-app.azurewebsites.net/
+// =====================================================
+
+app.MapGet(
+    "/",
+    () =>
+        Results.Ok(
+            new
+            {
+                application =
+                    "MediGo API",
+
+                status =
+                    "running"
+            }
+        )
+);
+
+
+// =====================================================
+// CONTROLLERS
 // =====================================================
 
 app.MapControllers();
@@ -364,3 +590,125 @@ app.MapControllers();
 // =====================================================
 
 app.Run();
+
+
+// =====================================================
+// COPY EXISTING FILES
+//
+// Used to copy existing local/bundled demo images into
+// Azure's writable persistent upload folder.
+//
+// Existing destination files are NOT overwritten.
+// =====================================================
+
+static void CopyMissingFiles(
+    string sourceDirectory,
+    string destinationDirectory
+)
+{
+    if (
+        !Directory.Exists(
+            sourceDirectory
+        )
+    )
+    {
+        return;
+    }
+
+
+    Directory.CreateDirectory(
+        destinationDirectory
+    );
+
+
+    // =================================================
+    // CREATE SUBDIRECTORIES
+    // =================================================
+
+    foreach (
+        var directory
+        in Directory.GetDirectories(
+            sourceDirectory,
+            "*",
+            SearchOption.AllDirectories
+        )
+    )
+    {
+        var relativePath =
+            Path.GetRelativePath(
+                sourceDirectory,
+                directory
+            );
+
+
+        var destinationPath =
+            Path.Combine(
+                destinationDirectory,
+                relativePath
+            );
+
+
+        Directory.CreateDirectory(
+            destinationPath
+        );
+    }
+
+
+    // =================================================
+    // COPY FILES THAT DO NOT ALREADY EXIST
+    // =================================================
+
+    foreach (
+        var file
+        in Directory.GetFiles(
+            sourceDirectory,
+            "*",
+            SearchOption.AllDirectories
+        )
+    )
+    {
+        var relativePath =
+            Path.GetRelativePath(
+                sourceDirectory,
+                file
+            );
+
+
+        var destinationFile =
+            Path.Combine(
+                destinationDirectory,
+                relativePath
+            );
+
+
+        var destinationParent =
+            Path.GetDirectoryName(
+                destinationFile
+            );
+
+
+        if (
+            !string.IsNullOrWhiteSpace(
+                destinationParent
+            )
+        )
+        {
+            Directory.CreateDirectory(
+                destinationParent
+            );
+        }
+
+
+        if (
+            !File.Exists(
+                destinationFile
+            )
+        )
+        {
+            File.Copy(
+                file,
+                destinationFile
+            );
+        }
+    }
+}
