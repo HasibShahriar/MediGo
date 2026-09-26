@@ -1,0 +1,186 @@
+USE MediGoDB;
+
+CREATE TABLE Orders
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    PatientId INT NOT NULL,
+
+    OrderNumber NVARCHAR(50) NOT NULL UNIQUE,
+
+    TransactionId NVARCHAR(30) NOT NULL UNIQUE,
+
+    TotalAmount DECIMAL(10,2) NOT NULL,
+
+    OrderStatus NVARCHAR(50) NOT NULL
+        DEFAULT 'Awaiting Payment',
+
+    PaymentStatus NVARCHAR(50) NOT NULL
+        DEFAULT 'Unpaid',
+
+    CreatedAt DATETIME2 NOT NULL
+        DEFAULT GETDATE(),
+
+    PaidAt DATETIME2 NULL,
+
+    CONSTRAINT FK_Orders_Patients
+        FOREIGN KEY (PatientId)
+        REFERENCES Patients(Id)
+        ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE OrderItems
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    OrderId INT NOT NULL,
+
+    MedicineId INT NULL,
+
+    MedicineName NVARCHAR(150) NOT NULL,
+
+    GenericName NVARCHAR(150) NULL,
+
+    Strength NVARCHAR(50) NULL,
+
+    UnitPrice DECIMAL(10,2) NOT NULL,
+
+    Quantity INT NOT NULL,
+
+    LineTotal DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT FK_OrderItems_Orders
+        FOREIGN KEY (OrderId)
+        REFERENCES Orders(Id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT FK_OrderItems_Medicines
+        FOREIGN KEY (MedicineId)
+        REFERENCES Medicines(Id)
+        ON DELETE SET NULL,
+
+    CONSTRAINT CK_OrderItems_Quantity
+        CHECK (Quantity > 0)
+);
+
+
+
+
+CREATE TABLE Payments
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    OrderId INT NOT NULL UNIQUE,
+
+    TransactionId NVARCHAR(30) NOT NULL UNIQUE,
+
+    SessionKey NVARCHAR(100) NULL,
+
+    ValidationId NVARCHAR(100) NULL,
+
+    BankTransactionId NVARCHAR(100) NULL,
+
+    CardType NVARCHAR(100) NULL,
+
+    Amount DECIMAL(10,2) NOT NULL,
+
+    Currency NVARCHAR(10) NOT NULL
+        DEFAULT 'BDT',
+
+    Status NVARCHAR(30) NOT NULL
+        DEFAULT 'Initiated',
+
+    CreatedAt DATETIME2 NOT NULL
+        DEFAULT GETDATE(),
+
+    PaidAt DATETIME2 NULL,
+
+    CONSTRAINT FK_Payments_Orders
+        FOREIGN KEY (OrderId)
+        REFERENCES Orders(Id)
+        ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE AppointmentRequests
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    PatientId INT NOT NULL,
+    DoctorId INT NOT NULL,
+
+    TransactionId NVARCHAR(30) NOT NULL UNIQUE,
+
+    BookingFee DECIMAL(10,2) NOT NULL DEFAULT 50.00,
+
+    ConsultationFee DECIMAL(10,2) NULL,
+
+    PaymentStatus NVARCHAR(30) NOT NULL DEFAULT 'Unpaid',
+
+    RequestStatus NVARCHAR(30) NOT NULL DEFAULT 'Awaiting Payment',
+
+    SerialNo NVARCHAR(50) NULL,
+
+    AppointmentDate DATE NULL,
+
+    PatientTime TIME NULL,
+
+    DoctorComment NVARCHAR(1000) NULL,
+
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETDATE(),
+
+    PaidAt DATETIME2 NULL,
+
+    RespondedAt DATETIME2 NULL,
+
+    CONSTRAINT FK_AppointmentRequests_Patient
+        FOREIGN KEY (PatientId)
+        REFERENCES Patients(Id),
+
+    CONSTRAINT FK_AppointmentRequests_Doctor
+        FOREIGN KEY (DoctorId)
+        REFERENCES Doctors(Id)
+);
+
+CREATE TABLE AppointmentPayments
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    AppointmentRequestId INT NOT NULL UNIQUE,
+
+    TransactionId NVARCHAR(30) NOT NULL UNIQUE,
+
+    Amount DECIMAL(10,2) NOT NULL,
+
+    Currency NVARCHAR(10) NOT NULL DEFAULT 'BDT',
+
+    SessionKey NVARCHAR(100) NULL,
+
+    ValidationId NVARCHAR(100) NULL,
+
+    BankTransactionId NVARCHAR(100) NULL,
+
+    CardType NVARCHAR(100) NULL,
+
+    Status NVARCHAR(30) NOT NULL DEFAULT 'Initiated',
+
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETDATE(),
+
+    PaidAt DATETIME2 NULL,
+
+    CONSTRAINT FK_AppointmentPayments_Request
+        FOREIGN KEY (AppointmentRequestId)
+        REFERENCES AppointmentRequests(Id)
+        ON DELETE CASCADE
+);
+
+select * from Orders;
+select * from OrderItems;
+select * from Payments;
+
+select * from AppointmentRequests;
+select * from AppointmentPayments;
