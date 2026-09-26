@@ -1,71 +1,263 @@
 import "../../Style/ComponentsCSS/AdminSidebar.css";
-import { NavLink } from "react-router-dom";
-import medigopic from "../../assets/medigo.png";
+
+import {
+  NavLink
+} from "react-router-dom";
+
+import medigopic
+  from "../../assets/medigo.png";
 
 import {
   FaTachometerAlt,
   FaUserMd,
   FaUsers,
   FaCalendarCheck,
-  FaSignOutAlt,
+  FaFileAlt,
+  FaPills,
+  FaClipboardList,
+  FaSignOutAlt
 } from "react-icons/fa";
 
+
 function AdminSidebar() {
+
   const menuItems = [
+
     {
-      name: "Dashboard",
-      icon: <FaTachometerAlt />,
-      path: "/admin-dashboard",
+      name:
+        "Dashboard",
+
+      icon:
+        <FaTachometerAlt />,
+
+      path:
+        "/admin-dashboard"
     },
+
+
     {
-      name: "Doctor",
-      icon: <FaUserMd />,
-      path: "/admin-doctors",
+      name:
+        "Doctor",
+
+      icon:
+        <FaUserMd />,
+
+      path:
+        "/admin-doctors"
     },
+
+
     {
-      name: "Patient",
-      icon: <FaUsers />,
-      path: "/admin-patients",
+      name:
+        "Patient",
+
+      icon:
+        <FaUsers />,
+
+      path:
+        "/admin-patients"
     },
+
+
     {
-      name: "Appointment",
-      icon: <FaCalendarCheck />,
-      path: "/admin-appointments",
+      name:
+        "Appointment",
+
+      icon:
+        <FaCalendarCheck />,
+
+      path:
+        "/admin-appointments"
     },
+
+
+    {
+      name:
+        "Reports",
+
+      icon:
+        <FaFileAlt />,
+
+      path:
+        "/admin-reports"
+    },
+
+
+    {
+      name:
+        "Medicine",
+
+      icon:
+        <FaPills />,
+
+      path:
+        "/admin-medicines"
+    },
+
+
+    // =================================================
+    // DIRECTLY BELOW MEDICINE
+    // =================================================
+
+    {
+      name:
+        "Medicine Order",
+
+      icon:
+        <FaClipboardList />,
+
+      path:
+        "/admin-medicine-orders"
+    }
+
   ];
 
+
+
   return (
-    
+
     <aside className="admin-sidebar">
-      <NavLink to="/" className="admin-logo-link">
+
+
+      <NavLink
+
+        to="/"
+
+        className="admin-logo-link"
+
+      >
+
+
         <div className="admin-logo">
-          <img src={medigopic} alt="MediGo Logo" />
+
+
+          <img
+
+            src={
+              medigopic
+            }
+
+            alt="MediGo Logo"
+
+          />
+
+
           <h2>
-            <span>Medi</span>Go
+
+            <span>
+              Medi
+            </span>
+
+            Go
+
           </h2>
+
+
         </div>
+
+
       </NavLink>
+
+
 
       <div className="admin-profile">
-        <div className="admin-avatar">A</div>
-        <p>Super Admin</p>
+
+
+        <div className="admin-avatar">
+
+          A
+
+        </div>
+
+
+        <p>
+          Super Admin
+        </p>
+
+
       </div>
 
+
+
       <nav className="admin-menu">
-        {menuItems.map((item, index) => (
-          <NavLink to={item.path} className="admin-menu-link" key={index}>
-            {item.icon}
-            <span>{item.name}</span>
-          </NavLink>
-        ))}
+
+
+        {
+          menuItems.map(
+            (
+              item,
+              index
+            ) => (
+
+              <NavLink
+
+                to={
+                  item.path
+                }
+
+                className="admin-menu-link"
+
+                key={
+                  index
+                }
+
+              >
+
+                {
+                  item.icon
+                }
+
+                <span>
+
+                  {
+                    item.name
+                  }
+
+                </span>
+
+              </NavLink>
+
+            )
+          )
+        }
+
+
       </nav>
 
-      <NavLink to="/admin-login" className="admin-logout">
+
+
+      <NavLink
+
+        to="/admin-login"
+
+        className="admin-logout"
+
+        onClick={
+          () => {
+
+            localStorage.removeItem(
+              "admin"
+            );
+
+          }
+        }
+
+      >
+
         <FaSignOutAlt />
-        <span>Log Out</span>
+
+        <span>
+          Log Out
+        </span>
+
       </NavLink>
+
+
     </aside>
+
   );
+
 }
+
 
 export default AdminSidebar;

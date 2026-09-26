@@ -1,4 +1,4 @@
-import "../../Style/PatientCSS/patientSetting.css";
+﻿import "../../Style/PatientCSS/PatientSetting.css";
 
 import axios from "axios";
 
@@ -254,7 +254,7 @@ function PatientSetting() {
 
 
         // ==============================================
-        // FULL NAME → FIRST NAME + LAST NAME
+        // FULL NAME â†’ FIRST NAME + LAST NAME
         // ==============================================
 
         const names =

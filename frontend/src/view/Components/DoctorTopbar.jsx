@@ -1,6 +1,7 @@
 import "../../Style/ComponentsCSS/DoctorTopbar.css";
 
-import defaultDoctorProfile from "../../assets/doctor-profile.png";
+import defaultDoctorProfile
+  from "../../assets/doctor-profile.png";
 
 import {
   useEffect,
@@ -20,7 +21,7 @@ import {
 
 
 const API_URL =
-  "http://localhost:5167";
+  "http://localhost:5138";
 
 
 function DoctorTopbar() {
@@ -51,7 +52,7 @@ function DoctorTopbar() {
 
 
   // =====================================================
-  // BUILD IMAGE URL
+  // BUILD PROFILE IMAGE URL
   // =====================================================
 
   function getProfileImageUrl(
@@ -65,8 +66,10 @@ function DoctorTopbar() {
     }
 
 
+    // Already complete URL
     if (
-      imagePath.startsWith("http://") ||
+      imagePath.startsWith("http://")
+      ||
       imagePath.startsWith("https://")
     ) {
 
@@ -75,8 +78,10 @@ function DoctorTopbar() {
     }
 
 
+    // Temporary browser image
     if (
-      imagePath.startsWith("blob:") ||
+      imagePath.startsWith("blob:")
+      ||
       imagePath.startsWith("data:")
     ) {
 
@@ -85,10 +90,22 @@ function DoctorTopbar() {
     }
 
 
+    // Convert:
+    // uploads\doctors\doctor.jpg
+    //
+    // into:
+    // uploads/doctors/doctor.jpg
+
     const cleanPath =
       imagePath
-        .replace(/\\/g, "/")
-        .replace(/^\/+/, "");
+        .replace(
+          /\\/g,
+          "/"
+        )
+        .replace(
+          /^\/+/,
+          ""
+        );
 
 
     return `${API_URL}/${cleanPath}`;
@@ -98,10 +115,59 @@ function DoctorTopbar() {
 
 
   // =====================================================
-  // LOAD DOCTOR
+  // ADD CACHE BUSTER
   // =====================================================
 
-  function loadDoctorInformation() {
+  function buildFreshImageUrl(
+    imagePath
+  ) {
+
+    if (!imagePath) {
+
+      return defaultDoctorProfile;
+
+    }
+
+
+    const imageUrl =
+      getProfileImageUrl(
+        imagePath
+      );
+
+
+    // Do not add query parameter
+    // to blob/data images
+
+    if (
+      imageUrl.startsWith("blob:")
+      ||
+      imageUrl.startsWith("data:")
+    ) {
+
+      return imageUrl;
+
+    }
+
+
+    const separator =
+      imageUrl.includes("?")
+        ? "&"
+        : "?";
+
+
+    return (
+      `${imageUrl}${separator}t=${Date.now()}`
+    );
+
+  }
+
+
+
+  // =====================================================
+  // LOAD DOCTOR INFORMATION
+  // =====================================================
+
+  async function loadDoctorInformation() {
 
     const storedDoctor =
       localStorage.getItem(
@@ -109,15 +175,21 @@ function DoctorTopbar() {
       );
 
 
+    // ===================================================
+    // NO LOGGED-IN DOCTOR
+    // ===================================================
+
     if (!storedDoctor) {
 
       setDoctorName(
         "Doctor"
       );
 
+
       setProfileImage(
         defaultDoctorProfile
       );
+
 
       return;
 
@@ -132,7 +204,17 @@ function DoctorTopbar() {
         );
 
 
-      if (!doctor.id) {
+      if (!doctor?.id) {
+
+        setDoctorName(
+          "Doctor"
+        );
+
+
+        setProfileImage(
+          defaultDoctorProfile
+        );
+
 
         return;
 
@@ -140,162 +222,261 @@ function DoctorTopbar() {
 
 
 
-      // =============================================
-      // TEMPORARY DATA FROM LOCAL STORAGE
-      // =============================================
+      // =================================================
+      // FIRST SHOW LOCAL STORAGE INFORMATION
+      // =================================================
 
-      if (doctor.fullName) {
-
-        setDoctorName(
-          doctor.fullName
-        );
-
-      }
-      else {
-
-        const name =
-          `${doctor.title || ""} ${doctor.firstName || ""} ${doctor.lastName || ""}`
-            .trim();
+      const localName =
+        doctor.fullName
+        ||
+        `${doctor.title || ""} ${doctor.firstName || ""} ${doctor.lastName || ""}`
+          .trim();
 
 
-        setDoctorName(
-          name || "Doctor"
-        );
+      setDoctorName(
+        localName
+        ||
+        "Doctor"
+      );
 
-      }
 
 
+      // =================================================
+      // FIRST SHOW LOCAL STORAGE PROFILE IMAGE
+      // =================================================
 
       if (doctor.profileImage) {
 
-        setProfileImage(
-          getProfileImageUrl(
+        const localImageUrl =
+          buildFreshImageUrl(
             doctor.profileImage
-          )
+          );
+
+
+        console.log(
+          "Doctor Topbar Local Image:",
+          localImageUrl
+        );
+
+
+        setProfileImage(
+          localImageUrl
+        );
+
+      }
+
+      else {
+
+        setProfileImage(
+          defaultDoctorProfile
         );
 
       }
 
 
 
-      // =============================================
-      // GET LATEST DATA FROM DATABASE
-      // =============================================
+      // =================================================
+      // THEN FETCH LATEST DOCTOR INFORMATION
+      // FROM DATABASE
+      // =================================================
 
-      axios
-        .get(
+      const response =
+        await axios.get(
+
           `${API_URL}/api/DoctorSettings/${doctor.id}`
+
+        );
+
+
+      const data =
+        response.data;
+
+
+      console.log(
+        "Doctor Topbar Database Data:",
+        data
+      );
+
+
+
+      // =================================================
+      // DOCTOR NAME
+      // =================================================
+
+      const fullName =
+        `${data.title || ""} ${data.firstName || ""} ${data.lastName || ""}`
+          .trim();
+
+
+      setDoctorName(
+
+        fullName
+        ||
+        localName
+        ||
+        "Doctor"
+
+      );
+
+
+
+      // =================================================
+      // PROFILE IMAGE
+      // =================================================
+
+      if (data.profileImage) {
+
+        const databaseImageUrl =
+          buildFreshImageUrl(
+            data.profileImage
+          );
+
+
+        console.log(
+          "Doctor Topbar Database Image:",
+          databaseImageUrl
+        );
+
+
+        setProfileImage(
+          databaseImageUrl
+        );
+
+      }
+
+      else if (
+        doctor.profileImage
+      ) {
+
+        // If backend response somehow has
+        // no image but localStorage does,
+        // keep the saved image.
+
+        setProfileImage(
+
+          buildFreshImageUrl(
+            doctor.profileImage
+          )
+
+        );
+
+      }
+
+      else {
+
+        setProfileImage(
+          defaultDoctorProfile
+        );
+
+      }
+
+
+
+      // =================================================
+      // UPDATE LOCAL STORAGE
+      // =================================================
+
+      const updatedDoctor = {
+
+        ...doctor,
+
+
+        id:
+          doctor.id,
+
+
+        title:
+          data.title
+          ??
+          doctor.title,
+
+
+        firstName:
+          data.firstName
+          ??
+          doctor.firstName,
+
+
+        lastName:
+          data.lastName
+          ??
+          doctor.lastName,
+
+
+        fullName:
+          fullName
+          ||
+          localName,
+
+
+        email:
+          data.email
+          ??
+          doctor.email,
+
+
+        phone:
+          data.phone
+          ??
+          doctor.phone,
+
+
+        specialty:
+          data.specialty
+          ??
+          doctor.specialty,
+
+
+        // Most important:
+        // keep the image if database
+        // response does not contain one.
+
+        profileImage:
+          data.profileImage
+          ||
+          doctor.profileImage
+          ||
+          null
+
+      };
+
+
+      localStorage.setItem(
+
+        "doctor",
+
+        JSON.stringify(
+          updatedDoctor
         )
 
-        .then((res) => {
-
-          const data =
-            res.data;
-
-
-          console.log(
-            "Topbar Doctor:",
-            data
-          );
-
-
-
-          // =====================================
-          // NAME
-          // =====================================
-
-          const fullName =
-            `${data.title || ""} ${data.firstName || ""} ${data.lastName || ""}`
-              .trim();
-
-
-          setDoctorName(
-            fullName || "Doctor"
-          );
-
-
-
-          // =====================================
-          // PROFILE IMAGE
-          // =====================================
-
-          if (data.profileImage) {
-
-            setProfileImage(
-              getProfileImageUrl(
-                data.profileImage
-              )
-            );
-
-          }
-          else {
-
-            setProfileImage(
-              defaultDoctorProfile
-            );
-
-          }
-
-
-
-          // =====================================
-          // UPDATE LOCAL STORAGE
-          // =====================================
-
-          const updatedDoctor = {
-
-            ...doctor,
-
-            title:
-              data.title,
-
-            firstName:
-              data.firstName,
-
-            lastName:
-              data.lastName,
-
-            fullName:
-              fullName,
-
-            email:
-              data.email,
-
-            phone:
-              data.phone,
-
-            profileImage:
-              data.profileImage
-
-          };
-
-
-          localStorage.setItem(
-            "doctor",
-            JSON.stringify(
-              updatedDoctor
-            )
-          );
-
-        })
-
-        .catch((err) => {
-
-          console.log(
-            "Topbar doctor load error:",
-            err
-          );
-
-        });
+      );
 
     }
 
     catch (error) {
 
       console.log(
-        "Doctor localStorage error:",
+        "Doctor Topbar Load Error:",
         error
       );
+
+
+      console.log(
+        "Backend:",
+        error.response?.data
+      );
+
+
+      /*
+        IMPORTANT:
+
+        Do NOT immediately replace the image
+        with the default image when the
+        database request fails.
+
+        The image stored in localStorage can
+        still be valid.
+      */
 
     }
 
@@ -304,7 +485,7 @@ function DoctorTopbar() {
 
 
   // =====================================================
-  // PAGE LOAD
+  // INITIAL LOAD
   // =====================================================
 
   useEffect(() => {
@@ -313,11 +494,16 @@ function DoctorTopbar() {
 
 
 
-    // ===============================================
-    // LISTEN FOR SETTINGS CHANGES
-    // ===============================================
+    // ===================================================
+    // WHEN DOCTOR SETTINGS ARE UPDATED
+    // ===================================================
 
     function handleDoctorUpdated() {
+
+      console.log(
+        "Doctor updated event received."
+      );
+
 
       loadDoctorInformation();
 
@@ -325,16 +511,22 @@ function DoctorTopbar() {
 
 
     window.addEventListener(
+
       "doctorUpdated",
+
       handleDoctorUpdated
+
     );
 
 
     return () => {
 
       window.removeEventListener(
+
         "doctorUpdated",
+
         handleDoctorUpdated
+
       );
 
     };
@@ -359,19 +551,43 @@ function DoctorTopbar() {
     );
 
 
-    window.dispatchEvent(
-      new Event(
-        "doctorUpdated"
-      )
-    );
-
-
     navigate(
       "/doctor-login",
       {
         replace: true
       }
     );
+
+  }
+
+
+
+  // =====================================================
+  // IMAGE LOAD ERROR
+  // =====================================================
+
+  function handleImageError(
+    event
+  ) {
+
+    console.log(
+      "Doctor topbar image failed:"
+    );
+
+
+    console.log(
+      event.currentTarget.src
+    );
+
+
+    // Stop an infinite onError loop
+
+    event.currentTarget.onerror =
+      null;
+
+
+    event.currentTarget.src =
+      defaultDoctorProfile;
 
   }
 
@@ -386,9 +602,9 @@ function DoctorTopbar() {
     <div className="doctor-topbar">
 
 
-      {/* =============================================
-          LEFT
-      ============================================= */}
+      {/* =================================================
+          LEFT SIDE
+      ================================================= */}
 
       <div className="doctor-topbar-left">
 
@@ -409,9 +625,9 @@ function DoctorTopbar() {
 
 
 
-      {/* =============================================
+      {/* =================================================
           RIGHT PROFILE
-      ============================================= */}
+      ================================================= */}
 
       <div className="doctor-profile-area">
 
@@ -420,10 +636,12 @@ function DoctorTopbar() {
 
           className="doctor-profile-click"
 
-          onClick={() =>
-            setOpenDropdown(
-              !openDropdown
-            )
+          onClick={
+            () =>
+              setOpenDropdown(
+                previous =>
+                  !previous
+              )
           }
 
         >
@@ -431,22 +649,17 @@ function DoctorTopbar() {
 
           <img
 
-            src={profileImage}
+            src={
+              profileImage
+            }
 
-            alt="Doctor Profile"
+            alt={
+              `${doctorName} Profile`
+            }
 
-            onError={(e) => {
-
-              console.log(
-                "Doctor topbar image failed:",
-                e.currentTarget.src
-              );
-
-
-              e.currentTarget.src =
-                defaultDoctorProfile;
-
-            }}
+            onError={
+              handleImageError
+            }
 
           />
 
@@ -462,39 +675,46 @@ function DoctorTopbar() {
 
 
 
-        {/* =============================================
+        {/* =================================================
             DROPDOWN
-        ============================================= */}
+        ================================================= */}
 
-        {openDropdown && (
+        {
+          openDropdown
+          &&
 
-          <div className="doctor-profile-dropdown">
+          (
 
-
-            <button
-
-              type="button"
-
-              className="doctor-logout-link"
-
-              onClick={
-                handleLogout
-              }
-
-            >
-
-              <FaSignOutAlt />
-
-              <span>
-                Logout
-              </span>
-
-            </button>
+            <div className="doctor-profile-dropdown">
 
 
-          </div>
+              <button
 
-        )}
+                type="button"
+
+                className="doctor-logout-link"
+
+                onClick={
+                  handleLogout
+                }
+
+              >
+
+                <FaSignOutAlt />
+
+
+                <span>
+                  Logout
+                </span>
+
+
+              </button>
+
+
+            </div>
+
+          )
+        }
 
 
       </div>

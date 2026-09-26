@@ -297,7 +297,7 @@ function DoctorSignUp() {
 
     axios
       .post(
-        "http://localhost:5167/api/Doctor/signup",
+        "http://localhost:5138/api/Doctor/signup",
         doctorData
       )
 

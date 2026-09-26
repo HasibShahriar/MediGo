@@ -4,6 +4,7 @@ import {
 } from "react";
 
 import {
+  useNavigate,
   useParams
 } from "react-router-dom";
 
@@ -23,12 +24,28 @@ import {
   FaBriefcase
 } from "react-icons/fa";
 
+import {
+  ToastContainer,
+  toast
+} from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 
 const API_URL =
   "http://localhost:5138";
 
 
 function DoctorDetailsPage() {
+
+  const navigate =
+    useNavigate();
+
+
+  const {
+    doctorSlug
+  } = useParams();
+
 
   const [
     activeTab,
@@ -54,46 +71,43 @@ function DoctorDetailsPage() {
   ] = useState("");
 
 
-  const {
-    doctorSlug
-  } = useParams();
+  const [
+    booking,
+    setBooking
+  ] = useState(false);
 
 
-
-  // =====================================================
-  // SPECIALTY DISPLAY NAMES
-  // =====================================================
 
   const specialtyNames = {
 
     "general-physician":
       "General Physician",
 
-    "pediatrics":
+    pediatrics:
       "Pediatrics",
 
     "gyne-obs":
       "Gyne & Obs",
 
-    "dermatology":
+    dermatology:
       "Dermatology",
 
     "internal-medicine":
       "Internal Medicine",
 
-    "cardiology":
+    cardiology:
       "Cardiology",
 
-    "neurology":
+    neurology:
       "Neurology",
 
-    "dentistry":
+    dentistry:
       "Dentistry",
 
-    "ophthalmology":
+    ophthalmology:
       "Ophthalmology",
 
-    "oncology":
+    oncology:
       "Oncology",
 
     "family-medicine":
@@ -101,14 +115,9 @@ function DoctorDetailsPage() {
 
     "physical-medicine":
       "Physical Medicine"
-
   };
 
 
-
-  // =====================================================
-  // IMAGE
-  // =====================================================
 
   function getProfileImageUrl(
     imagePath
@@ -125,7 +134,9 @@ function DoctorDetailsPage() {
       imagePath.startsWith(
         "http://"
       )
+
       ||
+
       imagePath.startsWith(
         "https://"
       )
@@ -138,21 +149,20 @@ function DoctorDetailsPage() {
 
     const cleanPath =
       imagePath
-        .replace(/\\/g, "/")
-        .replace(/^\/+/, "");
+        .replace(
+          /\\/g,
+          "/"
+        )
+        .replace(
+          /^\/+/,
+          ""
+        );
 
 
-    return (
-      `${API_URL}/${cleanPath}`
-    );
-
+    return `${API_URL}/${cleanPath}`;
   }
 
 
-
-  // =====================================================
-  // FORMAT DATE
-  // =====================================================
 
   function formatDate(
     value
@@ -166,7 +176,9 @@ function DoctorDetailsPage() {
 
 
     const date =
-      new Date(value);
+      new Date(
+        value
+      );
 
 
     if (
@@ -183,19 +195,19 @@ function DoctorDetailsPage() {
     return date.toLocaleDateString(
       "en-GB",
       {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
+        day:
+          "2-digit",
+
+        month:
+          "short",
+
+        year:
+          "numeric"
       }
     );
-
   }
 
 
-
-  // =====================================================
-  // CONSULTATION DURATION
-  // =====================================================
 
   function formatMinutes(
     value
@@ -213,7 +225,6 @@ function DoctorDetailsPage() {
 
 
     return `${value} Minutes`;
-
   }
 
 
@@ -234,48 +245,48 @@ function DoctorDetailsPage() {
         `${API_URL}/api/public-doctors/${doctorSlug}`
       )
 
-      .then((res) => {
+      .then(
+        response => {
 
-        console.log(
-          "Doctor Details:",
-          res.data
-        );
-
-
-        setDoctor(
-          res.data
-        );
+          setDoctor(
+            response.data
+          );
 
 
-        document.title =
-          `MediGo | ${res.data.fullName}`;
+          document.title =
+            `MediGo | ${response.data.fullName}`;
 
-      })
+        }
+      )
 
-      .catch((err) => {
+      .catch(
+        error => {
 
-        console.log(
-          "Doctor details error:",
-          err
-        );
-
-
-        setDoctor(null);
+          console.log(
+            "Doctor Details Error:",
+            error
+          );
 
 
-        setError(
-          err.response?.data?.message
-          ||
-          "Doctor not found."
-        );
+          setDoctor(null);
 
-      })
 
-      .finally(() => {
+          setError(
+            error.response?.data?.message
+            ||
+            "Doctor not found."
+          );
 
-        setLoading(false);
+        }
+      )
 
-      });
+      .finally(
+        () => {
+
+          setLoading(false);
+
+        }
+      );
 
   }, [
     doctorSlug
@@ -284,8 +295,157 @@ function DoctorDetailsPage() {
 
 
   // =====================================================
-  // LOADING
+  // BOOK ONLINE APPOINTMENT
   // =====================================================
+
+  async function bookOnlineAppointment() {
+
+    const savedPatient =
+      localStorage.getItem(
+        "patient"
+      );
+
+
+    if (!savedPatient) {
+
+      toast.info(
+        "Please login as a patient first."
+      );
+
+
+      setTimeout(
+        () => {
+
+          navigate(
+            "/patient-login"
+          );
+
+        },
+        800
+      );
+
+
+      return;
+    }
+
+
+
+    let patient;
+
+
+    try {
+
+      patient =
+        JSON.parse(
+          savedPatient
+        );
+
+    }
+
+    catch {
+
+      localStorage.removeItem(
+        "patient"
+      );
+
+
+      navigate(
+        "/patient-login"
+      );
+
+
+      return;
+    }
+
+
+
+    if (!patient?.id) {
+
+      toast.error(
+        "Patient information is missing."
+      );
+
+      return;
+    }
+
+
+    if (!doctor?.id) {
+
+      toast.error(
+        "Doctor information is missing."
+      );
+
+      return;
+    }
+
+
+
+    setBooking(true);
+
+
+    try {
+
+      const response =
+        await axios.post(
+
+          `${API_URL}/api/appointment-payment/initiate`,
+
+          {
+            patientId:
+              patient.id,
+
+            doctorId:
+              doctor.id
+          }
+
+        );
+
+
+      const paymentUrl =
+        response.data?.paymentUrl;
+
+
+      if (!paymentUrl) {
+
+        toast.error(
+          "Payment gateway URL was not received."
+        );
+
+        return;
+      }
+
+
+      window.location.href =
+        paymentUrl;
+
+    }
+
+    catch (error) {
+
+      console.log(
+        "Appointment Payment Error:",
+        error.response?.data
+      );
+
+
+      toast.error(
+        error.response?.data?.message
+        ||
+        error.response?.data?.detail
+        ||
+        "Could not start appointment payment."
+      );
+
+    }
+
+    finally {
+
+      setBooking(false);
+
+    }
+  }
+
+
 
   if (loading) {
 
@@ -296,9 +456,7 @@ function DoctorDetailsPage() {
         <Nav />
 
         <h1 className="doctor-not-found">
-
           Loading doctor...
-
         </h1>
 
         <Footer />
@@ -306,14 +464,9 @@ function DoctorDetailsPage() {
       </div>
 
     );
-
   }
 
 
-
-  // =====================================================
-  // NOT FOUND
-  // =====================================================
 
   if (
     !doctor
@@ -342,25 +495,25 @@ function DoctorDetailsPage() {
       </div>
 
     );
-
   }
 
 
 
   const specialtyName =
+
     specialtyNames[
       doctor.specialty
     ]
+
     ||
+
     doctor.specialty
+
     ||
+
     "Not added";
 
 
-
-  // =====================================================
-  // JSX
-  // =====================================================
 
   return (
 
@@ -370,23 +523,14 @@ function DoctorDetailsPage() {
       <Nav />
 
 
-
       <section className="doctor-details-page">
 
-
-        {/* =================================================
-            TOP DOCTOR CARD
-        ================================================= */}
 
         <div className="doctor-profile-card">
 
 
           <div className="doctor-profile-top">
 
-
-            {/* =============================================
-                LEFT
-            ============================================= */}
 
             <div className="doctor-profile-left">
 
@@ -403,28 +547,24 @@ function DoctorDetailsPage() {
                   doctor.fullName
                 }
 
-                onError={(e) => {
+                onError={
+                  event => {
 
-                  e.currentTarget.src =
-                    defaultDoctorProfile;
+                    event.currentTarget.src =
+                      defaultDoctorProfile;
 
-                }}
+                  }
+                }
 
               />
-
 
 
               <div className="doctor-main-info">
 
 
                 <h1>
-
-                  {
-                    doctor.fullName
-                  }
-
+                  {doctor.fullName}
                 </h1>
-
 
 
                 <p>
@@ -438,15 +578,9 @@ function DoctorDetailsPage() {
                 </p>
 
 
-
                 <p>
-
-                  {
-                    specialtyName
-                  }
-
+                  {specialtyName}
                 </p>
-
 
 
                 <p className="working-text">
@@ -473,10 +607,6 @@ function DoctorDetailsPage() {
 
 
 
-            {/* =============================================
-                RIGHT
-            ============================================= */}
-
             <div className="doctor-profile-right">
 
 
@@ -485,28 +615,28 @@ function DoctorDetailsPage() {
               </h3>
 
 
-
               {
-                doctor.consultationFee
-                !== null
+                doctor.consultationFee !== null
                 &&
-                doctor.consultationFee
-                !== undefined
+                doctor.consultationFee !== undefined
+
                   ? (
 
                     <h2>
 
-                      ৳ {
+                      ৳{" "}
+                      {
                         doctor.consultationFee
                       }
 
                       <span>
-                        (incl. VAT)
+                        {" "}(Pay Later)
                       </span>
 
                     </h2>
 
                   )
+
                   : (
 
                     <h2>
@@ -518,11 +648,47 @@ function DoctorDetailsPage() {
 
 
 
-              <button className="appointment-btn">
+              <div className="appointment-booking-fee">
+
+                <small>
+                  Online Booking Fee
+                </small>
+
+                <strong>
+                  ৳50
+                </strong>
+
+                <span>
+                  Pay Now
+                </span>
+
+              </div>
+
+
+
+              <button
+
+                type="button"
+
+                className="appointment-btn"
+
+                onClick={
+                  bookOnlineAppointment
+                }
+
+                disabled={
+                  booking
+                }
+
+              >
 
                 <FaCalendarAlt />
 
-                Book Online Appointment
+                {
+                  booking
+                    ? "Opening Payment..."
+                    : "Book Online Appointment - ৳50"
+                }
 
               </button>
 
@@ -533,10 +699,6 @@ function DoctorDetailsPage() {
           </div>
 
 
-
-          {/* =================================================
-              STATS
-          ================================================= */}
 
           <div className="doctor-stats">
 
@@ -550,12 +712,12 @@ function DoctorDetailsPage() {
               <h4>
 
                 {
-                  doctor.experienceYears
-                  !== null
+                  doctor.experienceYears !== null
                   &&
-                  doctor.experienceYears
-                  !== undefined
+                  doctor.experienceYears !== undefined
+
                     ? `${doctor.experienceYears}+ Years`
+
                     : "Not added"
                 }
 
@@ -615,7 +777,8 @@ function DoctorDetailsPage() {
 
                 {
                   doctor.patientsAttended
-                  ?? 0
+                  ??
+                  0
                 }
 
               </h4>
@@ -627,24 +790,24 @@ function DoctorDetailsPage() {
 
 
 
-          {/* =================================================
-              TABS
-          ================================================= */}
-
           <div className="doctor-tabs">
 
 
             <span
 
-              onClick={() =>
-                setActiveTab(
-                  "info"
-                )
+              onClick={
+                () =>
+                  setActiveTab(
+                    "info"
+                  )
               }
 
               className={
-                activeTab === "info"
+                activeTab ===
+                "info"
+
                   ? "active-tab"
+
                   : ""
               }
 
@@ -660,16 +823,19 @@ function DoctorDetailsPage() {
 
             <span
 
-              onClick={() =>
-                setActiveTab(
-                  "experience"
-                )
+              onClick={
+                () =>
+                  setActiveTab(
+                    "experience"
+                  )
               }
 
               className={
                 activeTab ===
                 "experience"
+
                   ? "active-tab"
+
                   : ""
               }
 
@@ -689,36 +855,35 @@ function DoctorDetailsPage() {
 
 
 
-        {/* =================================================
-            LOWER AREA
-        ================================================= */}
-
         <div className="doctor-details-grid">
 
-
-          {/* =============================================
-              ABOUT / EXPERIENCE
-          ============================================= */}
 
           <div className="doctor-about-card">
 
 
             {
-              activeTab === "info"
+              activeTab ===
+                "info"
+
               &&
+
               (
 
                 <>
 
                   <h2>
 
-                    About {
+                    About{" "}
+
+                    {
                       doctor.fullName
                     }
 
                     {
                       doctor.qualifications
+
                         ? ` - ${doctor.qualifications}`
+
                         : ""
                     }
 
@@ -738,7 +903,9 @@ function DoctorDetailsPage() {
 
                   {
                     doctor.workingDescription
+
                     &&
+
                     (
 
                       <>
@@ -747,13 +914,10 @@ function DoctorDetailsPage() {
                           Professional Information
                         </h2>
 
-
                         <p>
-
                           {
                             doctor.workingDescription
                           }
-
                         </p>
 
                       </>
@@ -771,7 +935,9 @@ function DoctorDetailsPage() {
             {
               activeTab ===
                 "experience"
+
               &&
+
               (
 
                 <>
@@ -792,12 +958,12 @@ function DoctorDetailsPage() {
                     <strong>
 
                       {
-                        doctor.experienceYears
-                        !== null
+                        doctor.experienceYears !== null
                         &&
-                        doctor.experienceYears
-                        !== undefined
+                        doctor.experienceYears !== undefined
+
                           ? `${doctor.experienceYears}+ years`
+
                           : "no experience information added"
                       }
 
@@ -806,7 +972,6 @@ function DoctorDetailsPage() {
                     of medical experience.
 
                   </p>
-
 
 
                   <p>
@@ -826,21 +991,15 @@ function DoctorDetailsPage() {
                   </p>
 
 
-
                   <p>
 
                     Speciality:{" "}
 
                     <strong>
-
-                      {
-                        specialtyName
-                      }
-
+                      {specialtyName}
                     </strong>
 
                   </p>
-
 
 
                   <p>
@@ -859,7 +1018,6 @@ function DoctorDetailsPage() {
 
                   </p>
 
-
                 </>
 
               )
@@ -870,16 +1028,8 @@ function DoctorDetailsPage() {
 
 
 
-          {/* =============================================
-              RIGHT SIDE
-          ============================================= */}
-
           <div className="doctor-side-area">
 
-
-            {/* =========================================
-                CONSULTATION TIME
-            ========================================= */}
 
             <div className="availability-card">
 
@@ -889,14 +1039,11 @@ function DoctorDetailsPage() {
               </h2>
 
 
-
               <div className="availability-block">
-
 
                 <p>
                   Instant Consultation Time
                 </p>
-
 
                 <h4>
 
@@ -908,18 +1055,14 @@ function DoctorDetailsPage() {
 
                 </h4>
 
-
               </div>
-
 
 
               <div className="availability-block">
 
-
                 <p>
                   Appointment Consultation Time
                 </p>
-
 
                 <h4>
 
@@ -931,7 +1074,6 @@ function DoctorDetailsPage() {
 
                 </h4>
 
-
               </div>
 
 
@@ -939,17 +1081,12 @@ function DoctorDetailsPage() {
 
 
 
-            {/* =========================================
-                AT A GLANCE
-            ========================================= */}
-
             <div className="glance-card">
 
 
               <h2>
                 At a Glance
               </h2>
-
 
 
               <div className="glance-grid">
@@ -961,49 +1098,22 @@ function DoctorDetailsPage() {
                     Consultation Fee
                   </p>
 
-
                   <h4>
 
                     {
-                      doctor.consultationFee
-                      !== null
+                      doctor.consultationFee !== null
                       &&
-                      doctor.consultationFee
-                      !== undefined
+                      doctor.consultationFee !== undefined
+
                         ? `৳ ${doctor.consultationFee}`
+
                         : "Not set"
                     }
 
                   </h4>
-
-                </div>
-
-
-
-                <div>
-
-                  <p>
-                    Follow-up fee
-                  </p>
-
-
-                  <h4>
-
-                    {
-                      doctor.followUpFee
-                      !== null
-                      &&
-                      doctor.followUpFee
-                      !== undefined
-                        ? `৳ ${doctor.followUpFee}`
-                        : "Not set"
-                    }
-
-                  </h4>
-
 
                   <small>
-                    Follow-up consultation
+                    Pay Later
                   </small>
 
                 </div>
@@ -1013,15 +1123,37 @@ function DoctorDetailsPage() {
                 <div>
 
                   <p>
-                    Patient attended
+                    Booking Fee
                   </p>
 
+                  <h4>
+                    ৳ 50
+                  </h4>
+
+                  <small>
+                    Pay Now
+                  </small>
+
+                </div>
+
+
+
+                <div>
+
+                  <p>
+                    Follow-up Fee
+                  </p>
 
                   <h4>
 
                     {
-                      doctor.patientsAttended
-                      ?? 0
+                      doctor.followUpFee !== null
+                      &&
+                      doctor.followUpFee !== undefined
+
+                        ? `৳ ${doctor.followUpFee}`
+
+                        : "Not set"
                     }
 
                   </h4>
@@ -1033,9 +1165,28 @@ function DoctorDetailsPage() {
                 <div>
 
                   <p>
-                    Doctor code
+                    Patient Attended
                   </p>
 
+                  <h4>
+
+                    {
+                      doctor.patientsAttended
+                      ??
+                      0
+                    }
+
+                  </h4>
+
+                </div>
+
+
+
+                <div>
+
+                  <p>
+                    Doctor Code
+                  </p>
 
                   <h4>
 
@@ -1065,14 +1216,21 @@ function DoctorDetailsPage() {
       </section>
 
 
-
       <Footer />
+
+
+      <ToastContainer
+
+        position="bottom-right"
+
+        autoClose={2200}
+
+      />
 
 
     </div>
 
   );
-
 }
 
 

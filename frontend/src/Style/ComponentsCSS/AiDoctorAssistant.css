@@ -1,0 +1,1365 @@
+/* =========================================================
+   MEDIGO AI
+   COLOR PALETTE
+
+   Primary Pink:      #ec4899
+   Dark Pink:         #db2777
+   Soft Pink:         #fff0f7
+   Light Blue:        #eaf3ff
+   Dark Text:         #111827
+   Gray Text:         #4b5563
+========================================================= */
+
+
+/* =========================================================
+   WIDGET POSITION
+
+   IMPORTANT:
+   pointer-events: none prevents the invisible wrapper
+   from blocking any other MediGo UI.
+========================================================= */
+
+.medigo-ai-widget {
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  z-index: 5000;
+
+  pointer-events: none;
+
+  font-family:
+    "Poppins",
+    Arial,
+    sans-serif;
+}
+
+
+
+/* =========================================================
+   FLOATING BUTTON
+========================================================= */
+
+.medigo-ai-launcher {
+  width: 60px;
+  height: 60px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+
+  position: relative;
+
+  font-size: 24px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #db2777
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      236,
+      72,
+      153,
+      0.35
+    );
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.medigo-ai-launcher:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 14px 36px
+    rgba(
+      236,
+      72,
+      153,
+      0.45
+    );
+}
+
+
+.medigo-ai-launcher-open {
+  transform:
+    rotate(0deg);
+}
+
+
+.medigo-ai-launcher-status {
+  position: absolute;
+
+  right: 2px;
+  top: 2px;
+
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  background-color:
+    #22c55e;
+
+  border:
+    3px solid white;
+}
+
+
+
+/* =========================================================
+   CHAT PANEL
+========================================================= */
+
+.medigo-ai-panel {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 76px;
+
+  width: 370px;
+
+  height: 570px;
+
+  max-height:
+    calc(100vh - 120px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+
+  background-color:
+    white;
+
+  border:
+    1px solid
+    #edf2f7;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 18px 55px
+    rgba(
+      17,
+      24,
+      39,
+      0.18
+    );
+
+  animation:
+    medigoAiOpen
+    0.2s ease;
+}
+
+
+@keyframes medigoAiOpen {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.97);
+  }
+
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.medigo-ai-header {
+  min-height: 72px;
+
+  padding:
+    13px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eaf3ff
+    );
+
+  border-bottom:
+    1px solid #f3d9e7;
+}
+
+
+.medigo-ai-header-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.medigo-ai-avatar {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 19px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #db2777
+    );
+
+  box-shadow:
+    0 5px 15px
+    rgba(
+      236,
+      72,
+      153,
+      0.23
+    );
+}
+
+
+.medigo-ai-online-dot {
+  position: absolute;
+
+  right: -1px;
+  bottom: 1px;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background-color:
+    #22c55e;
+
+  border:
+    2px solid white;
+}
+
+
+.medigo-ai-header-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.medigo-ai-header-text strong {
+  color:
+    #111827;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.medigo-ai-header-text span {
+  color:
+    #6b7280;
+
+  font-size: 11px;
+}
+
+
+.medigo-ai-close {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  color:
+    #6b7280;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.75
+    );
+
+  transition:
+    0.2s ease;
+}
+
+
+.medigo-ai-close:hover {
+  color:
+    #ec4899;
+
+  background-color:
+    white;
+}
+
+
+
+/* =========================================================
+   SAFETY NOTE
+========================================================= */
+
+.medigo-ai-safety-note {
+  padding:
+    7px 14px;
+
+  text-align: center;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  color:
+    #6b7280;
+
+  background-color:
+    #ffffff;
+
+  border-bottom:
+    1px solid #f3f4f6;
+}
+
+
+
+/* =========================================================
+   CHAT AREA
+========================================================= */
+
+.medigo-ai-message-area {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding:
+    16px 13px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fffafd 55%,
+      #f7fbff 100%
+    );
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #f9a8d4
+    transparent;
+}
+
+
+.medigo-ai-message-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.medigo-ai-message-area::-webkit-scrollbar-thumb {
+  background:
+    #f9a8d4;
+
+  border-radius:
+    10px;
+}
+
+
+
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
+
+.medigo-ai-message-row {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 7px;
+
+  margin-bottom:
+    13px;
+}
+
+
+.medigo-ai-message-row-user {
+  justify-content:
+    flex-end;
+}
+
+
+.medigo-ai-message-row-bot {
+  justify-content:
+    flex-start;
+}
+
+
+.medigo-ai-small-avatar {
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #db2777
+    );
+}
+
+
+.medigo-ai-message-content {
+  max-width:
+    calc(100% - 35px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items:
+    flex-start;
+}
+
+
+
+/* =========================================================
+   CHAT BUBBLE
+========================================================= */
+
+.medigo-ai-bubble {
+  max-width: 285px;
+
+  padding:
+    10px 12px;
+
+  border-radius:
+    14px;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+.medigo-ai-bubble p {
+  margin: 0;
+
+  white-space:
+    pre-wrap;
+
+  word-break:
+    break-word;
+}
+
+
+.medigo-ai-bot-bubble {
+  color:
+    #374151;
+
+  background-color:
+    white;
+
+  border:
+    1px solid #edf2f7;
+
+  border-bottom-left-radius:
+    5px;
+
+  box-shadow:
+    0 3px 10px
+    rgba(
+      17,
+      24,
+      39,
+      0.05
+    );
+}
+
+
+.medigo-ai-user-bubble {
+  color:
+    white;
+
+  margin-left:
+    auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #db2777
+    );
+
+  border-bottom-right-radius:
+    5px;
+
+  box-shadow:
+    0 4px 13px
+    rgba(
+      236,
+      72,
+      153,
+      0.18
+    );
+}
+
+
+
+/* =========================================================
+   EMERGENCY
+========================================================= */
+
+.medigo-ai-emergency-bubble {
+  max-width: 100%;
+
+  color:
+    #991b1b;
+
+  background-color:
+    #fff1f2;
+
+  border:
+    1px solid #fecaca;
+}
+
+
+.medigo-ai-emergency-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom:
+    6px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color:
+    #dc2626;
+}
+
+
+
+/* =========================================================
+   SPECIALTY CARD
+========================================================= */
+
+.medigo-ai-specialty-card {
+  width: 100%;
+
+  box-sizing:
+    border-box;
+
+  margin-top:
+    7px;
+
+  padding:
+    10px 12px;
+
+  border-radius:
+    12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eaf3ff
+    );
+
+  border:
+    1px solid #f5d0e4;
+}
+
+
+.medigo-ai-specialty-card > span {
+  display: block;
+
+  margin-bottom:
+    2px;
+
+  color:
+    #6b7280;
+
+  font-size: 10px;
+}
+
+
+.medigo-ai-specialty-card > strong {
+  display: block;
+
+  color:
+    #ec4899;
+
+  font-size: 14px;
+}
+
+
+.medigo-ai-specialty-card p {
+  margin:
+    5px 0 0;
+
+  color:
+    #4b5563;
+
+  font-size: 11px;
+
+  line-height: 1.45;
+}
+
+
+
+/* =========================================================
+   DOCTOR RESULTS
+========================================================= */
+
+.medigo-ai-doctor-results {
+  width: 100%;
+
+  margin-top:
+    10px;
+}
+
+
+.medigo-ai-result-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom:
+    8px;
+
+  color:
+    #111827;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.medigo-ai-result-title svg {
+  color:
+    #ec4899;
+}
+
+
+
+/* =========================================================
+   DOCTOR CARD
+========================================================= */
+
+.medigo-ai-doctor-card {
+  width: 100%;
+
+  box-sizing:
+    border-box;
+
+  display: flex;
+
+  gap: 10px;
+
+  margin-bottom:
+    9px;
+
+  padding:
+    10px;
+
+  border:
+    1px solid #edf2f7;
+
+  border-radius:
+    13px;
+
+  background-color:
+    white;
+
+  box-shadow:
+    0 4px 12px
+    rgba(
+      17,
+      24,
+      39,
+      0.05
+    );
+
+  transition:
+    0.2s ease;
+}
+
+
+.medigo-ai-doctor-card:hover {
+  border-color:
+    #f9a8d4;
+
+  box-shadow:
+    0 7px 18px
+    rgba(
+      236,
+      72,
+      153,
+      0.12
+    );
+}
+
+
+.medigo-ai-doctor-card > img {
+  width: 58px;
+  height: 58px;
+
+  border-radius:
+    12px;
+
+  object-fit:
+    cover;
+
+  flex-shrink: 0;
+
+  background-color:
+    #f3f4f6;
+}
+
+
+.medigo-ai-doctor-details {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+}
+
+
+.medigo-ai-doctor-details > strong {
+  color:
+    #111827;
+
+  font-size:
+    12px;
+}
+
+
+.medigo-ai-qualification,
+.medigo-ai-workplace {
+  width: 100%;
+
+  margin-top:
+    2px;
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+
+  color:
+    #6b7280;
+
+  font-size:
+    10px;
+}
+
+
+
+/* =========================================================
+   DOCTOR TAGS
+========================================================= */
+
+.medigo-ai-doctor-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 4px;
+
+  margin-top:
+    5px;
+}
+
+
+.medigo-ai-doctor-tags span {
+  padding:
+    3px 6px;
+
+  border-radius:
+    5px;
+
+  color:
+    #db2777;
+
+  background-color:
+    #fff0f7;
+
+  font-size:
+    9px;
+
+  font-weight:
+    600;
+}
+
+
+.medigo-ai-match-reason {
+  margin:
+    5px 0 0;
+
+  color:
+    #6b7280;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.4;
+}
+
+
+
+/* =========================================================
+   VIEW DOCTOR BUTTON
+========================================================= */
+
+.medigo-ai-view-doctor {
+  margin-top:
+    6px;
+
+  padding:
+    6px 10px;
+
+  border:
+    none;
+
+  border-radius:
+    6px;
+
+  cursor:
+    pointer;
+
+  color:
+    white;
+
+  background-color:
+    #ec4899;
+
+  font-size:
+    10px;
+
+  font-weight:
+    600;
+
+  transition:
+    0.2s ease;
+}
+
+
+.medigo-ai-view-doctor:hover {
+  background-color:
+    #db2777;
+}
+
+
+
+/* =========================================================
+   RANKING NOTE
+========================================================= */
+
+.medigo-ai-ranking-note {
+  margin:
+    6px 2px 0;
+
+  color:
+    #9ca3af;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.4;
+}
+
+
+
+/* =========================================================
+   AI TYPING
+========================================================= */
+
+.medigo-ai-typing {
+  min-width:
+    48px;
+
+  height:
+    33px;
+
+  padding:
+    0 11px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    center;
+
+  gap: 4px;
+
+  border:
+    1px solid #edf2f7;
+
+  border-radius:
+    13px;
+
+  background-color:
+    white;
+}
+
+
+.medigo-ai-typing span {
+  width: 5px;
+  height: 5px;
+
+  border-radius:
+    50%;
+
+  background-color:
+    #ec4899;
+
+  animation:
+    medigoTyping
+    1.1s infinite ease-in-out;
+}
+
+
+.medigo-ai-typing span:nth-child(2) {
+  animation-delay:
+    0.15s;
+}
+
+
+.medigo-ai-typing span:nth-child(3) {
+  animation-delay:
+    0.3s;
+}
+
+
+@keyframes medigoTyping {
+
+  0%,
+  60%,
+  100% {
+    transform:
+      translateY(0);
+
+    opacity:
+      0.5;
+  }
+
+
+  30% {
+    transform:
+      translateY(-4px);
+
+    opacity:
+      1;
+  }
+
+}
+
+
+
+/* =========================================================
+   INPUT SECTION
+========================================================= */
+
+.medigo-ai-input-section {
+  display: flex;
+
+  align-items:
+    flex-end;
+
+  gap: 7px;
+
+  padding:
+    10px 11px;
+
+  border-top:
+    1px solid #edf2f7;
+
+  background-color:
+    white;
+}
+
+
+.medigo-ai-input-section textarea {
+  flex: 1;
+
+  min-height:
+    42px;
+
+  max-height:
+    90px;
+
+  box-sizing:
+    border-box;
+
+  padding:
+    10px 12px;
+
+  resize:
+    none;
+
+  outline:
+    none;
+
+  border:
+    1px solid #e5e7eb;
+
+  border-radius:
+    12px;
+
+  color:
+    #111827;
+
+  background:
+    #f9fafb;
+
+  font-family:
+    inherit;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.4;
+
+  transition:
+    0.2s ease;
+}
+
+
+.medigo-ai-input-section textarea:focus {
+  border-color:
+    #ec4899;
+
+  background:
+    white;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      236,
+      72,
+      153,
+      0.08
+    );
+}
+
+
+.medigo-ai-input-section textarea::placeholder {
+  color:
+    #9ca3af;
+}
+
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
+.medigo-ai-send-button {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border:
+    none;
+
+  border-radius:
+    11px;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  cursor:
+    pointer;
+
+  color:
+    white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #db2777
+    );
+
+  font-size:
+    14px;
+
+  transition:
+    0.2s ease;
+}
+
+
+.medigo-ai-send-button:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 5px 14px
+    rgba(
+      236,
+      72,
+      153,
+      0.25
+    );
+}
+
+
+.medigo-ai-send-button:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    0.45;
+}
+
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.medigo-ai-bottom {
+  min-height:
+    28px;
+
+  padding:
+    0 12px 8px;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  background:
+    white;
+}
+
+
+.medigo-ai-bottom button {
+  padding: 0;
+
+  border: none;
+
+  cursor:
+    pointer;
+
+  color:
+    #ec4899;
+
+  background:
+    transparent;
+
+  font-size:
+    9px;
+
+  font-weight:
+    600;
+}
+
+
+.medigo-ai-bottom span {
+  color:
+    #9ca3af;
+
+  font-size:
+    8px;
+
+  text-align:
+    right;
+}
+
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (
+  max-width: 600px
+) {
+
+  .medigo-ai-widget {
+    right:
+      12px;
+
+    bottom:
+      12px;
+  }
+
+
+  .medigo-ai-panel {
+    width:
+      min(
+        360px,
+        calc(
+          100vw - 24px
+        )
+      );
+
+    height:
+      min(
+        560px,
+        calc(
+          100vh - 100px
+        )
+      );
+
+    bottom:
+      70px;
+  }
+
+
+  .medigo-ai-launcher {
+    width:
+      55px;
+
+    height:
+      55px;
+
+    font-size:
+      21px;
+  }
+
+}
+
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (
+  max-width: 380px
+) {
+
+  .medigo-ai-panel {
+    width:
+      calc(
+        100vw - 20px
+      );
+
+    right:
+      -2px;
+  }
+
+
+  .medigo-ai-bubble {
+    max-width:
+      245px;
+  }
+
+}

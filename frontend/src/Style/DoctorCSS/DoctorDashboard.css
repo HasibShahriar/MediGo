@@ -214,3 +214,552 @@
 .doctor-no-patient p {
   color: #6b7280;
 }
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.doctor-dashboard-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: #f8fafc;
+
+  font-family: Arial, sans-serif;
+}
+
+
+.doctor-dashboard-main {
+  flex: 1;
+
+  min-width: 0;
+
+  background: #f8fafc;
+}
+
+
+.doctor-dashboard-content {
+  padding: 24px;
+}
+
+
+/* =========================================================
+   TOP STAT CARDS
+========================================================= */
+
+.doctor-card-row {
+  margin-bottom: 24px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+.doctor-info-card {
+  min-height: 145px;
+
+  padding: 21px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 15px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  box-shadow:
+    0 7px 22px
+    rgba(15, 23, 42, 0.04);
+}
+
+
+.card-green {
+  background:
+    linear-gradient(
+      135deg,
+      #ecfdf5,
+      #dcfce7
+    );
+}
+
+
+.card-red {
+  background:
+    linear-gradient(
+      135deg,
+      #fff1f2,
+      #fee2e2
+    );
+}
+
+
+.card-blue {
+  background:
+    linear-gradient(
+      135deg,
+      #eff6ff,
+      #e0f2fe
+    );
+}
+
+
+.doctor-card-icon {
+  margin-top: 3px;
+
+  font-size: 28px;
+
+  color: #12344d;
+}
+
+
+.doctor-info-card p {
+  margin: 0 0 5px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.doctor-info-card h2 {
+  margin: 0;
+
+  color: #12344d;
+
+  font-size: 32px;
+}
+
+
+.doctor-info-card span {
+  margin-top: 5px;
+
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   PATIENT CARD
+========================================================= */
+
+.doctor-patient-card {
+  overflow: hidden;
+
+  background: white;
+
+  border: 1px solid #edf0f5;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 8px 28px
+    rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   PATIENT HEADER
+========================================================= */
+
+.doctor-patient-header {
+  padding: 20px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.doctor-patient-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 24px;
+}
+
+
+.doctor-patient-header p {
+  margin: 5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.doctor-patient-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.doctor-patient-search {
+  width: 340px;
+
+  height: 43px;
+
+  padding: 0 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #f3c6dc;
+
+  border-radius: 8px;
+
+  background: #fff0f7;
+}
+
+
+.doctor-patient-search svg {
+  color: #ec4899;
+}
+
+
+.doctor-patient-search input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+.doctor-patient-controls select {
+  height: 43px;
+
+  padding: 0 13px;
+
+  border: 1px solid #dce5f2;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #f8faff;
+
+  color: #374151;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.doctor-patient-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.doctor-patient-table {
+  width: 100%;
+
+  min-width: 1300px;
+
+  border-collapse: collapse;
+}
+
+
+.doctor-patient-table thead {
+  background: #eef3ff;
+}
+
+
+.doctor-patient-table th,
+.doctor-patient-table td {
+  padding: 16px;
+
+  text-align: left;
+
+  vertical-align: middle;
+}
+
+
+.doctor-patient-table th {
+  color: #111827;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.doctor-patient-table td {
+  color: #374151;
+
+  font-size: 12px;
+
+  border-bottom: 1px solid #eef2f7;
+}
+
+
+.doctor-patient-table tbody tr:nth-child(odd) {
+  background: #fffafd;
+}
+
+
+.doctor-patient-table tbody tr:nth-child(even) {
+  background: #f7faff;
+}
+
+
+.doctor-patient-table tbody tr:hover {
+  background: #fff4fa;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.doctor-history-status {
+  width: fit-content;
+
+  padding: 6px 10px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  border-radius: 100px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+.doctor-history-status.accepted {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+.doctor-history-status.rejected {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.doctor-no-patient {
+  padding: 45px;
+
+  text-align: center;
+}
+
+
+.doctor-no-patient > svg {
+  margin-bottom: 10px;
+
+  color: #8b5cf6;
+
+  font-size: 32px;
+}
+
+
+.doctor-no-patient h3 {
+  margin: 0 0 7px;
+
+  color: #111827;
+}
+
+
+.doctor-no-patient p {
+  margin: 0;
+
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.doctor-patient-footer {
+  padding: 18px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  background: white;
+}
+
+
+.doctor-patient-footer p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.doctor-patient-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.doctor-patient-pagination button {
+  min-width: 40px;
+
+  height: 40px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 7px;
+
+  background: white;
+
+  color: #475569;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+.doctor-patient-pagination button.active-page {
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: white;
+}
+
+
+.doctor-patient-pagination button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .doctor-card-row {
+    grid-template-columns: 1fr;
+  }
+
+
+  .doctor-patient-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .doctor-patient-controls {
+    width: 100%;
+  }
+
+
+  .doctor-patient-search {
+    flex: 1;
+
+    width: auto;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .doctor-dashboard-content {
+    padding: 16px;
+  }
+
+
+  .doctor-patient-controls {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .doctor-patient-search {
+    width: 100%;
+  }
+
+
+  .doctor-patient-controls select {
+    width: 100%;
+  }
+
+
+  .doctor-patient-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}

@@ -71,7 +71,7 @@ function PatientSignUp() {
 
   axios
   .post(
-    "http://localhost:5167/api/Patient/signup",
+    "http://localhost:5138/api/Patient/signup",
     patientData
   )
   .then((res) => {

@@ -1,0 +1,3104 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+.admin-medicine-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7 0%,
+      #f9f9ff 50%,
+      #eaf3ff 100%
+    );
+}
+
+
+.admin-medicine-main {
+  min-width: 0;
+  padding: 34px;
+}
+
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.medicine-page-header {
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+.medicine-eyebrow {
+  margin: 0 0 7px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  color: #ec4899;
+}
+
+
+.medicine-page-header h1 {
+  margin: 0;
+
+  font-size: 31px;
+  font-weight: 800;
+
+  color: #111827;
+}
+
+
+.medicine-page-subtitle {
+  margin: 8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+.medicine-add-btn {
+  height: 48px;
+
+  padding: 0 21px;
+
+  border: none;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px
+    rgba(236, 72, 153, 0.23);
+
+  transition: 0.25s ease;
+}
+
+
+.medicine-add-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(236, 72, 153, 0.3);
+}
+
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.medicine-stats {
+  margin-bottom: 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+
+.medicine-stat-card {
+  padding: 17px 18px;
+
+  border:
+    1px solid #eee7ef;
+
+  border-radius: 14px;
+
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  box-shadow:
+    0 7px 22px
+    rgba(31, 41, 55, 0.05);
+}
+
+
+.medicine-stat-icon {
+  width: 45px;
+  height: 45px;
+
+  min-width: 45px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+
+.medicine-stat-icon.total {
+  background-color: #fce7f3;
+  color: #db2777;
+}
+
+
+.medicine-stat-icon.available {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+
+.medicine-stat-icon.low {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+
+.medicine-stat-icon.prescription {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+
+.medicine-stat-card p {
+  margin: 0 0 3px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.medicine-stat-card h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 22px;
+}
+
+
+
+/* =========================================================
+   SEARCH / FILTER
+========================================================= */
+
+.medicine-toolbar {
+  margin-bottom: 22px;
+
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  background-color: white;
+
+  border:
+    1px solid #f3d6e6;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(236, 72, 153, 0.07);
+}
+
+
+.medicine-search-box {
+  flex: 1;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border:
+    1px solid #f1d6e4;
+
+  border-radius: 9px;
+
+  background-color: #fff7fb;
+}
+
+
+.medicine-search-box svg {
+  color: #ec4899;
+}
+
+
+.medicine-search-box input {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 14px;
+}
+
+
+.medicine-toolbar > select {
+  height: 46px;
+
+  max-width: 190px;
+
+  padding: 0 12px;
+
+  border:
+    1px solid #dce5f2;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: #f8faff;
+
+  color: #374151;
+
+  cursor: pointer;
+}
+
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.medicine-table-card {
+  background-color: white;
+
+  border:
+    1px solid #f3d6e6;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px
+    rgba(236, 72, 153, 0.09);
+}
+
+
+.medicine-table-title {
+  padding: 21px 25px;
+
+  border-bottom:
+    1px solid #f2edf1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f8faff
+    );
+}
+
+
+.medicine-table-title h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 20px;
+}
+
+
+.medicine-table-title p {
+  margin: 5px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 13px;
+}
+
+
+.medicine-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.medicine-admin-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+
+.medicine-admin-table thead {
+  background:
+    linear-gradient(
+      135deg,
+      #f5f3ff,
+      #eaf3ff
+    );
+}
+
+
+.medicine-admin-table th,
+.medicine-admin-table td {
+  padding: 16px 17px;
+
+  text-align: left;
+
+  vertical-align: middle;
+}
+
+
+.medicine-admin-table th {
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.medicine-admin-table td {
+  border-bottom:
+    1px solid #eef2f7;
+
+  color: #374151;
+
+  font-size: 13px;
+}
+
+
+.medicine-admin-table tbody tr:nth-child(even) {
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f7faff
+    );
+}
+
+
+.medicine-admin-table tbody tr:hover {
+  background-color: #fff4fa;
+}
+
+
+
+/* =========================================================
+   MEDICINE PRODUCT CELL
+========================================================= */
+
+.medicine-product-cell {
+  min-width: 250px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.medicine-table-image {
+  width: 52px;
+  height: 52px;
+
+  min-width: 52px;
+
+  border-radius: 11px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eaf3ff
+    );
+
+  color: #ec4899;
+
+  font-size: 21px;
+
+  border:
+    1px solid #f1dce7;
+}
+
+
+.medicine-table-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.medicine-product-cell strong,
+.medicine-product-cell span,
+.medicine-product-cell small {
+  display: block;
+}
+
+
+.medicine-product-cell strong {
+  color: #111827;
+
+  font-size: 14px;
+}
+
+
+.medicine-product-cell span {
+  margin-top: 3px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.medicine-product-cell small {
+  margin-top: 3px;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+}
+
+
+.medicine-price {
+  color: #db2777;
+}
+
+
+
+/* =========================================================
+   STOCK
+========================================================= */
+
+.medicine-stock {
+  width: fit-content;
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+.medicine-stock.good {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+
+.medicine-stock.low {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+
+.medicine-stock.out {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.prescription-badge,
+.medicine-status {
+  display: inline-flex;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  white-space: nowrap;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+
+.prescription-badge.required {
+  background-color: #ede9fe;
+  color: #6d28d9;
+}
+
+
+.prescription-badge.normal {
+  background-color: #eef3ff;
+  color: #2563eb;
+}
+
+
+.medicine-status.active {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+
+.medicine-status.inactive {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.medicine-action-group {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.medicine-edit-btn,
+.medicine-delete-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.medicine-edit-btn {
+  background-color: #eaf3ff;
+
+  color: #2563eb;
+}
+
+
+.medicine-edit-btn:hover {
+  background-color: #2563eb;
+
+  color: white;
+}
+
+
+.medicine-delete-btn {
+  background-color: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+.medicine-delete-btn:hover {
+  background-color: #dc2626;
+
+  color: white;
+}
+
+
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.medicine-empty-state {
+  min-height: 300px;
+
+  padding: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #6b7280;
+}
+
+
+.medicine-empty-state > svg {
+  margin-bottom: 13px;
+
+  color: #dba5c2;
+
+  font-size: 37px;
+}
+
+
+.medicine-empty-state h3 {
+  margin: 0;
+
+  color: #111827;
+}
+
+
+.medicine-empty-state p {
+  margin: 8px 0 0;
+}
+
+
+.medicine-loader {
+  width: 33px;
+  height: 33px;
+
+  margin-bottom: 13px;
+
+  border:
+    3px solid #f3d6e6;
+
+  border-top-color: #ec4899;
+
+  border-radius: 50%;
+
+  animation:
+    medicineSpin
+    0.8s
+    linear
+    infinite;
+}
+
+
+@keyframes medicineSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.medicine-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 4000;
+
+  padding: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color:
+    rgba(17, 24, 39, 0.55);
+
+  backdrop-filter:
+    blur(4px);
+}
+
+
+.medicine-modal {
+  width: min(900px, 100%);
+
+  max-height: 92vh;
+
+  overflow-y: auto;
+
+  background-color: white;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 70px
+    rgba(17, 24, 39, 0.25);
+}
+
+
+.medicine-modal-header {
+  padding: 22px 27px;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7fb,
+      #f5f3ff
+    );
+
+  border-bottom:
+    1px solid #f0e5ed;
+}
+
+
+.medicine-modal-header p {
+  margin: 0 0 4px;
+
+  color: #ec4899;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.medicine-modal-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 23px;
+}
+
+
+.medicine-modal-close {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ffffff;
+
+  color: #6b7280;
+
+  cursor: pointer;
+}
+
+
+.medicine-modal-close:hover {
+  color: #ec4899;
+}
+
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.medicine-form-body {
+  padding: 27px;
+}
+
+
+.medicine-image-section {
+  margin-bottom: 27px;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border:
+    1px dashed #e6b8d0;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f8faff
+    );
+}
+
+
+.medicine-image-preview {
+  width: 105px;
+  height: 105px;
+
+  min-width: 105px;
+
+  border-radius: 13px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+
+  border:
+    1px solid #eadde7;
+
+  color: #ec4899;
+
+  font-size: 31px;
+}
+
+
+.medicine-image-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.medicine-image-upload {
+  width: fit-content;
+
+  padding: 10px 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border-radius: 8px;
+
+  background-color: #fff0f7;
+
+  color: #db2777;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.medicine-image-upload input {
+  display: none;
+}
+
+
+.medicine-image-section p {
+  margin: 9px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+}
+
+
+.medicine-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px 22px;
+}
+
+
+.medicine-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.medicine-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+
+.medicine-form-group label {
+  color: #374151;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.medicine-form-group input,
+.medicine-form-group select,
+.medicine-form-group textarea {
+  width: 100%;
+
+  border:
+    1px solid #dfe4ec;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background-color: white;
+
+  color: #111827;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+
+.medicine-form-group input,
+.medicine-form-group select {
+  height: 45px;
+
+  padding: 0 13px;
+}
+
+
+.medicine-form-group textarea {
+  min-height: 105px;
+
+  padding: 12px 13px;
+
+  resize: vertical;
+}
+
+
+.medicine-form-group input:focus,
+.medicine-form-group select:focus,
+.medicine-form-group textarea:focus {
+  border-color: #ec4899;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(236, 72, 153, 0.08);
+}
+
+
+
+/* =========================================================
+   CHECKBOX CARDS
+========================================================= */
+
+.medicine-switch-area {
+  margin-top: 24px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+
+.medicine-check-card {
+  padding: 15px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  border:
+    1px solid #e7e1e8;
+
+  border-radius: 11px;
+
+  background-color: #fafbff;
+
+  cursor: pointer;
+}
+
+
+.medicine-check-card input {
+  display: none;
+}
+
+
+.medicine-checkbox {
+  width: 20px;
+  height: 20px;
+
+  min-width: 20px;
+
+  border:
+    2px solid #d1d5db;
+
+  border-radius: 6px;
+
+  background-color: white;
+
+  position: relative;
+}
+
+
+.medicine-check-card
+input:checked
++
+.medicine-checkbox {
+  border-color: #ec4899;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+}
+
+
+.medicine-check-card
+input:checked
++
+.medicine-checkbox::after {
+  content: "✓";
+
+  position: absolute;
+
+  left: 3px;
+  top: -2px;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 900;
+}
+
+
+.medicine-check-card strong {
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+.medicine-check-card p {
+  margin: 4px 0 0;
+
+  color: #6b7280;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.medicine-modal-footer {
+  padding: 18px 27px;
+
+  position: sticky;
+
+  bottom: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 11px;
+
+  border-top:
+    1px solid #ece7eb;
+
+  background-color: white;
+}
+
+
+.medicine-cancel-btn,
+.medicine-save-btn {
+  height: 43px;
+
+  padding: 0 20px;
+
+  border-radius: 8px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.medicine-cancel-btn {
+  border:
+    1px solid #d1d5db;
+
+  background-color: white;
+
+  color: #374151;
+}
+
+
+.medicine-save-btn {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: white;
+}
+
+
+.medicine-cancel-btn:disabled,
+.medicine-save-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .medicine-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .medicine-toolbar {
+    flex-wrap: wrap;
+  }
+
+
+  .medicine-search-box {
+    flex-basis: 100%;
+  }
+
+}
+
+
+@media (max-width: 1050px) {
+
+  .admin-medicine-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .admin-medicine-main {
+    padding: 22px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .medicine-page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .medicine-stats {
+    grid-template-columns: 1fr;
+  }
+
+
+  .medicine-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .medicine-toolbar > select {
+    width: 100%;
+
+    max-width: none;
+  }
+
+
+  .medicine-form-grid,
+  .medicine-switch-area {
+    grid-template-columns: 1fr;
+  }
+
+
+  .medicine-form-group.full-width {
+    grid-column: auto;
+  }
+
+
+  .medicine-image-section {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .medicine-modal-overlay {
+    padding: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   MEDICINE TABLE PAGINATION
+========================================================= */
+
+.medicine-table-footer {
+  width: 100%;
+
+  padding: 20px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-top: 1px solid #eef2f7;
+
+  background: #ffffff;
+}
+
+
+.medicine-table-footer p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+.medicine-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.medicine-pagination button {
+  min-width: 45px;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.medicine-pagination button:hover:not(:disabled) {
+  border-color: #c084fc;
+
+  color: #9333ea;
+
+  background: #faf5ff;
+}
+
+
+.medicine-pagination button.active-page {
+  border-color: transparent;
+
+  background: linear-gradient(
+    135deg,
+    #ec4899,
+    #8b5cf6
+  );
+
+  color: white;
+}
+
+
+.medicine-pagination button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 700px) {
+
+  .medicine-table-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}
+
+/* =========================================================
+   ADMIN REPORT PAGE
+========================================================= */
+
+.admin-report-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 290px 1fr;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eaf3ff
+    );
+}
+
+
+.admin-report-main {
+  min-width: 0;
+
+  padding: 35px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.admin-report-page-header {
+  margin-bottom: 24px;
+}
+
+
+.admin-report-eyebrow {
+  margin: 0 0 5px;
+
+  color: #ec4899;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.admin-report-page-header h1 {
+  margin: 0;
+
+  color: #006b5f;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+
+.admin-report-subtitle {
+  margin: 7px 0 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.admin-report-stats {
+  margin-bottom: 24px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+.admin-report-stat-card {
+  padding: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  background: white;
+
+  border: 1px solid #edf0f5;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 20px
+    rgba(0, 0, 0, 0.04);
+}
+
+
+.admin-report-stat-icon {
+  width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  font-size: 19px;
+}
+
+
+.admin-report-stat-icon.total {
+  color: #2563eb;
+
+  background: #eff6ff;
+}
+
+
+.admin-report-stat-icon.unread {
+  color: #ea580c;
+
+  background: #fff7ed;
+}
+
+
+.admin-report-stat-icon.read {
+  color: #16a34a;
+
+  background: #ecfdf5;
+}
+
+
+.admin-report-stat-card p {
+  margin: 0 0 4px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.admin-report-stat-card h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.admin-report-table-card {
+  overflow: hidden;
+
+  background: white;
+
+  border: 1px solid #f3d6e6;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(236, 72, 153, 0.08);
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.admin-report-table-header {
+  padding: 22px 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.admin-report-table-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 20px;
+}
+
+
+.admin-report-table-header p {
+  margin: 5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.admin-report-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.admin-report-search {
+  width: 340px;
+
+  height: 44px;
+
+  padding: 0 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  background: #f9fafb;
+}
+
+
+.admin-report-search svg {
+  flex-shrink: 0;
+
+  color: #ec4899;
+}
+
+
+.admin-report-search input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 13px;
+}
+
+
+.admin-report-controls select {
+  height: 44px;
+
+  padding: 0 13px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #374151;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.admin-report-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.admin-report-table {
+  width: 100%;
+
+  min-width: 1250px;
+
+  border-collapse: collapse;
+}
+
+
+.admin-report-table thead {
+  background:
+    linear-gradient(
+      135deg,
+      #f5f3ff,
+      #eaf3ff
+    );
+}
+
+
+.admin-report-table th,
+.admin-report-table td {
+  padding: 16px 17px;
+
+  text-align: left;
+
+  vertical-align: middle;
+}
+
+
+.admin-report-table th {
+  color: #111827;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.admin-report-table td {
+  color: #374151;
+
+  font-size: 12px;
+
+  border-bottom:
+    1px solid #eef2f7;
+}
+
+
+.admin-report-table tbody tr:hover {
+  background: #fff8fb;
+}
+
+
+.admin-report-unread-row {
+  background: #fffaf5;
+}
+
+
+/* =========================================================
+   PATIENT
+========================================================= */
+
+.admin-report-patient {
+  min-width: 140px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.admin-report-patient strong {
+  color: #111827;
+}
+
+
+.admin-report-patient small {
+  color: #8b5cf6;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.admin-report-email {
+  color: #475569;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   CONCERN
+========================================================= */
+
+.admin-report-concern {
+  display: inline-block;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  background: #faf5ff;
+
+  color: #9333ea;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.admin-report-message-preview {
+  min-width: 190px;
+
+  max-width: 270px;
+
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.admin-report-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 10px;
+
+  border-radius: 100px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+.admin-report-status.unread {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+
+.admin-report-status.read {
+  background: #ecfdf5;
+
+  color: #16a34a;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.admin-report-date {
+  white-space: nowrap;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.admin-report-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.admin-report-view-btn,
+.admin-report-delete-btn {
+  width: 37px;
+
+  height: 37px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.admin-report-view-btn {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+
+.admin-report-view-btn:hover {
+  background: #2563eb;
+
+  color: white;
+}
+
+
+.admin-report-delete-btn {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+
+.admin-report-delete-btn:hover {
+  background: #dc2626;
+
+  color: white;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.admin-report-empty {
+  padding: 50px;
+
+  text-align: center;
+}
+
+
+.admin-report-empty > svg {
+  margin-bottom: 10px;
+
+  color: #8b5cf6;
+
+  font-size: 34px;
+}
+
+
+.admin-report-empty h3 {
+  margin: 0 0 7px;
+
+  color: #111827;
+}
+
+
+.admin-report-empty p {
+  margin: 0;
+
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   PAGINATION FOOTER
+========================================================= */
+
+.admin-report-footer {
+  width: 100%;
+
+  padding: 20px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-top: 1px solid #eef2f7;
+
+  background: #ffffff;
+}
+
+
+.admin-report-footer p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PAGINATION BUTTONS
+========================================================= */
+
+.admin-report-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.admin-report-pagination button {
+  min-width: 45px;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.admin-report-pagination button:hover:not(:disabled) {
+  border-color: #c084fc;
+
+  background: #faf5ff;
+
+  color: #9333ea;
+}
+
+
+.admin-report-pagination button.active-page {
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: white;
+}
+
+
+.admin-report-pagination button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.admin-report-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  padding: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(17, 24, 39, 0.55);
+}
+
+
+.admin-report-modal {
+  width: min(680px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 25px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.admin-report-modal-header {
+  margin-bottom: 22px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.admin-report-modal-header p {
+  margin: 0 0 5px;
+
+  color: #ec4899;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.admin-report-modal-header h2 {
+  margin: 0;
+
+  color: #006b5f;
+}
+
+
+.admin-report-modal-header button {
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #374151;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   REPORT DETAILS
+========================================================= */
+
+.admin-report-detail-grid {
+  margin-bottom: 20px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.admin-report-detail-grid > div {
+  padding: 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+}
+
+
+.admin-report-detail-grid small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.admin-report-detail-grid strong {
+  color: #374151;
+
+  font-size: 12px;
+
+  word-break: break-word;
+}
+
+
+.admin-report-full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   FULL MESSAGE
+========================================================= */
+
+.admin-report-full-message {
+  padding: 17px;
+
+  background: #fff8fb;
+
+  border: 1px solid #fce7f3;
+
+  border-radius: 10px;
+}
+
+
+.admin-report-full-message small {
+  color: #9ca3af;
+
+  font-size: 10px;
+}
+
+
+.admin-report-full-message p {
+  margin: 7px 0 0;
+
+  color: #374151;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .admin-report-layout {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .admin-report-main {
+    padding: 20px;
+  }
+
+
+  .admin-report-stats {
+    grid-template-columns: 1fr;
+  }
+
+
+  .admin-report-table-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .admin-report-controls {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .admin-report-search {
+    width: 100%;
+  }
+
+
+  .admin-report-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .admin-report-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .admin-report-full-width {
+    grid-column: auto;
+  }
+
+}
+
+/* =========================================================
+   MEDICINE LIST CARD - FIXED
+========================================================= */
+
+.medicine-list-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #f3d6e6;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px
+    rgba(236, 72, 153, 0.09);
+}
+
+
+/* =========================================================
+   LIST HEADER
+========================================================= */
+
+.medicine-list-header {
+  padding: 22px 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid #f2edf1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f8faff
+    );
+}
+
+
+.medicine-list-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 21px;
+
+  font-weight: 800;
+}
+
+
+.medicine-list-header p {
+  margin: 5px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.medicine-list-header .medicine-search-box {
+  width: 360px;
+
+  height: 46px;
+
+  flex: none;
+
+  padding: 0 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #f1d6e4;
+
+  border-radius: 10px;
+
+  background: #fff7fb;
+}
+
+
+.medicine-list-header .medicine-search-box svg {
+  color: #ec4899;
+
+  font-size: 17px;
+
+  flex-shrink: 0;
+}
+
+
+.medicine-list-header .medicine-search-box input {
+  width: 100%;
+
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 14px;
+
+  font-family: inherit;
+}
+
+
+.medicine-list-header .medicine-search-box input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* =========================================================
+   FILTER ROW
+========================================================= */
+
+.medicine-filter-row {
+  width: 100%;
+
+  padding: 16px 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  background: #ffffff;
+
+  border-bottom:
+    1px solid #eef2f7;
+}
+
+
+.medicine-filter-row select {
+  min-width: 180px;
+
+  height: 44px;
+
+  padding: 0 38px 0 13px;
+
+  border:
+    1px solid #dce5f2;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: #f8faff;
+
+  color: #374151;
+
+  font-size: 13px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.medicine-filter-row select:hover {
+  border-color: #d8b4fe;
+}
+
+
+.medicine-filter-row select:focus {
+  border-color: #ec4899;
+
+  background-color: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(236, 72, 153, 0.08);
+}
+
+
+/* First category filter */
+
+.medicine-filter-row select:nth-child(1) {
+  min-width: 210px;
+}
+
+
+/* Status filter */
+
+.medicine-filter-row select:nth-child(2) {
+  min-width: 160px;
+}
+
+
+/* Prescription filter */
+
+.medicine-filter-row select:nth-child(3) {
+  min-width: 220px;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.medicine-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.medicine-admin-table {
+  width: 100%;
+
+  min-width: 1100px;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+}
+
+
+.medicine-admin-table thead {
+  background:
+    linear-gradient(
+      135deg,
+      #f5f3ff,
+      #eaf3ff
+    );
+}
+
+
+.medicine-admin-table th,
+.medicine-admin-table td {
+  padding: 16px 20px;
+
+  text-align: left;
+
+  vertical-align: middle;
+}
+
+
+.medicine-admin-table th {
+  color: #111827;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  text-transform: none;
+}
+
+
+.medicine-admin-table td {
+  border-bottom:
+    1px solid #eef2f7;
+
+  color: #374151;
+
+  font-size: 13px;
+}
+
+
+.medicine-admin-table tbody tr:nth-child(even) {
+  background:
+    linear-gradient(
+      135deg,
+      #fffafd,
+      #f7faff
+    );
+}
+
+
+.medicine-admin-table tbody tr:hover {
+  background: #fff4fa;
+}
+
+
+/* =========================================================
+   PRODUCT COLUMN
+========================================================= */
+
+.medicine-product-cell {
+  min-width: 250px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.medicine-table-image {
+  width: 54px;
+
+  height: 54px;
+
+  min-width: 54px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid #f1dce7;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7,
+      #eaf3ff
+    );
+
+  color: #ec4899;
+
+  font-size: 21px;
+}
+
+
+.medicine-table-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.medicine-product-cell strong,
+.medicine-product-cell span,
+.medicine-product-cell small {
+  display: block;
+}
+
+
+.medicine-product-cell strong {
+  color: #111827;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.medicine-product-cell span {
+  margin-top: 3px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+.medicine-product-cell small {
+  margin-top: 3px;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.medicine-price {
+  color: #db2777;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   STOCK
+========================================================= */
+
+.medicine-stock {
+  width: fit-content;
+
+  padding: 6px 9px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+.medicine-stock.good {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.medicine-stock.low {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+
+.medicine-stock.out {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.prescription-badge,
+.medicine-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  white-space: nowrap;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+
+.prescription-badge.required {
+  background: #ede9fe;
+
+  color: #6d28d9;
+}
+
+
+.prescription-badge.normal {
+  background: #eef3ff;
+
+  color: #2563eb;
+}
+
+
+.medicine-status.active {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.medicine-status.inactive {
+  background: #f3f4f6;
+
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.medicine-action-group {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.medicine-edit-btn,
+.medicine-delete-btn {
+  width: 38px;
+
+  height: 38px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.medicine-edit-btn {
+  background: #eaf3ff;
+
+  color: #2563eb;
+}
+
+
+.medicine-edit-btn:hover {
+  background: #2563eb;
+
+  color: #ffffff;
+}
+
+
+.medicine-delete-btn {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+.medicine-delete-btn:hover {
+  background: #dc2626;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   PAGINATION FOOTER
+========================================================= */
+
+.medicine-table-footer {
+  width: 100%;
+
+  padding: 20px 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-top:
+    1px solid #eef2f7;
+
+  background: #ffffff;
+}
+
+
+.medicine-table-footer p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+.medicine-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.medicine-pagination button {
+  min-width: 46px;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.medicine-pagination button:hover:not(:disabled) {
+  border-color: #c084fc;
+
+  background: #faf5ff;
+
+  color: #9333ea;
+}
+
+
+.medicine-pagination button.active-page {
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 14px
+    rgba(139, 92, 246, 0.22);
+}
+
+
+.medicine-pagination button:disabled {
+  background: #f8fafc;
+
+  color: #cbd5e1;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .medicine-list-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .medicine-list-header .medicine-search-box {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .medicine-filter-row {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .medicine-filter-row select,
+  .medicine-filter-row select:nth-child(1),
+  .medicine-filter-row select:nth-child(2),
+  .medicine-filter-row select:nth-child(3) {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .medicine-table-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}
