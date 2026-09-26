@@ -1,0 +1,141 @@
+CREATE DATABASE MediGoDB;
+
+USE MediGoDB;
+
+CREATE TABLE Patients
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    FullName NVARCHAR(100) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    Gender NVARCHAR(20) NOT NULL,
+    Phone NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(150) NOT NULL UNIQUE,
+    Address NVARCHAR(255) NOT NULL,
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+    ProfileImage NVARCHAR(MAX) NULL,
+    IsVisible BIT NOT NULL DEFAULT 1
+);
+
+
+
+CREATE TABLE Doctors
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    Title NVARCHAR(30) NOT NULL,
+
+    FirstName NVARCHAR(50) NOT NULL,
+
+    LastName NVARCHAR(50) NOT NULL,
+
+    DateOfBirth DATE NOT NULL,
+
+    Gender NVARCHAR(20) NOT NULL,
+
+    NationalId NVARCHAR(50) NOT NULL UNIQUE,
+
+    BmdcNumber NVARCHAR(50) NOT NULL UNIQUE,
+
+    Phone NVARCHAR(20) NOT NULL,
+
+    Email NVARCHAR(150) NOT NULL UNIQUE,
+
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+
+    AcceptedTerms BIT NOT NULL DEFAULT 0,
+
+    TermsAcceptedAt DATETIME2 NULL,
+
+    RequestStatus NVARCHAR(20) NOT NULL DEFAULT 'pending',
+
+    IsVisible BIT NOT NULL DEFAULT 0,
+
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+CREATE TABLE DoctorRequests
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    Title NVARCHAR(30) NOT NULL,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+
+    DateOfBirth DATE NOT NULL,
+    Gender NVARCHAR(20) NOT NULL,
+
+    NationalId NVARCHAR(50) NOT NULL UNIQUE,
+    BmdcNumber NVARCHAR(50) NOT NULL UNIQUE,
+
+    Phone NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(150) NOT NULL UNIQUE,
+
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+
+    AcceptedTerms BIT NOT NULL DEFAULT 1,
+    TermsAcceptedAt DATETIME2 NULL,
+
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+
+CREATE TABLE DoctorSettings
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    DoctorId INT NOT NULL UNIQUE,
+
+    Qualifications NVARCHAR(250) NULL,
+
+    Specialty NVARCHAR(100) NULL,
+
+    WorkingPlace NVARCHAR(200) NULL,
+
+    WorkingDescription NVARCHAR(500) NULL,
+
+    ExperienceYears INT NULL,
+
+    Bio NVARCHAR(1000) NULL,
+
+    InstantConsultationMinutes INT NULL,
+
+    AppointmentConsultationMinutes INT NULL,
+
+    ConsultationFee DECIMAL(10,2) NULL,
+
+    FollowUpFee DECIMAL(10,2) NULL,
+
+    PatientsAttended INT NOT NULL DEFAULT 0,
+
+    DoctorCode NVARCHAR(30) NOT NULL UNIQUE,
+
+    ProfileImage NVARCHAR(500) NULL,
+
+    UpdatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+
+    CONSTRAINT FK_DoctorSettings_Doctors
+        FOREIGN KEY (DoctorId)
+        REFERENCES Doctors(Id)
+        ON DELETE CASCADE
+);
+
+
+CREATE TABLE Admins
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+
+
+SELECT * FROM DoctorRequests;
+SELECT * FROM Doctors;
+
+SELECT * FROM DoctorSettings;
+
+select * from Patients;
