@@ -1,0 +1,1337 @@
+/* =========================================================
+   MEDIGO PHARMACY PAGE
+   CLEAN COMPLETE CSS
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.pharmacy-page {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8fc 0%,
+      #ffffff 48%,
+      #f2f6ff 100%
+    );
+
+  color: #111827;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.pharmacy-hero {
+  width: min(1400px, 92%);
+
+  min-height: 190px;
+
+  margin: 105px auto 0;
+
+  padding: 35px 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #f1d9e6;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f7 0%,
+      #f8f3ff 52%,
+      #eaf3ff 100%
+    );
+
+  box-shadow:
+    0 14px 38px
+    rgba(236, 72, 153, 0.08);
+}
+
+
+/* IMPORTANT:
+   Hero text must be vertical,
+   not horizontal.
+*/
+
+.pharmacy-hero-content {
+  display: block;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.pharmacy-eyebrow {
+  margin: 0 0 8px;
+
+  color: #ec4899;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.pharmacy-hero h1 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 38px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+
+.pharmacy-hero-content > p:last-child {
+  max-width: 650px;
+
+  margin: 11px 0 0;
+
+  color: #6b7280;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   MY CART BUTTON
+========================================================= */
+
+.pharmacy-cart-button {
+  position: relative;
+
+  min-width: 145px;
+
+  height: 50px;
+
+  padding: 0 20px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 24px
+    rgba(139, 92, 246, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.pharmacy-cart-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 28px
+    rgba(139, 92, 246, 0.28);
+}
+
+
+.pharmacy-cart-button span {
+  min-width: 22px;
+
+  height: 22px;
+
+  padding: 0 6px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #ec4899;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.pharmacy-main {
+  width: min(1400px, 92%);
+
+  margin: 0 auto;
+
+  padding: 38px 0 65px;
+
+  box-sizing: border-box;
+
+  scroll-margin-top: 95px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.pharmacy-section-heading {
+  margin-bottom: 22px;
+}
+
+
+.pharmacy-section-eyebrow {
+  margin: 0 0 7px;
+
+  color: #ec4899;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+
+.pharmacy-section-heading h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 29px;
+
+  font-weight: 800;
+}
+
+
+.pharmacy-section-heading > div > p:last-child {
+  margin: 7px 0 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   SEARCH + FILTER CARD
+========================================================= */
+
+.pharmacy-toolbar {
+  width: 100%;
+
+  margin-bottom: 30px;
+
+  padding: 24px;
+
+  display: block;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e7e8ee;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 28px
+    rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.pharmacy-search-box {
+  width: 100%;
+
+  height: 54px;
+
+  padding: 0 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #f2bdd8;
+
+  border-radius: 11px;
+
+  background: #fff8fb;
+}
+
+
+.pharmacy-search-box svg {
+  flex-shrink: 0;
+
+  color: #ec4899;
+
+  font-size: 19px;
+}
+
+
+.pharmacy-search-box input {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #374151;
+
+  font-size: 14px;
+
+  font-family: inherit;
+}
+
+
+.pharmacy-search-box input::placeholder {
+  color: #7b8190;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.pharmacy-filter-grid {
+  width: 100%;
+
+  margin-top: 16px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.pharmacy-filter-grid select {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 46px;
+
+  padding: 0 38px 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d5dfed;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: #f8faff;
+
+  color: #374151;
+
+  font-size: 13px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.pharmacy-filter-grid select:hover {
+  border-color: #c4b5fd;
+
+  background-color: #ffffff;
+}
+
+
+.pharmacy-filter-grid select:focus {
+  border-color: #ec4899;
+
+  background-color: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(236, 72, 153, 0.08);
+}
+
+
+/* =========================================================
+   FILTER RESULT BOTTOM
+========================================================= */
+
+.pharmacy-filter-bottom {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding-top: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-top: 1px solid #eef2f7;
+
+  box-sizing: border-box;
+}
+
+
+.pharmacy-filter-bottom span {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.pharmacy-filter-bottom button {
+  padding: 9px 15px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #fff0f7;
+
+  color: #ec4899;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.pharmacy-filter-bottom button:hover {
+  background: #ec4899;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MEDICINE GRID
+========================================================= */
+
+.pharmacy-medicine-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   MEDICINE CARD
+========================================================= */
+
+.pharmacy-medicine-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border: 1px solid #eee5ec;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 9px 27px
+    rgba(17, 24, 39, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.pharmacy-medicine-card:hover {
+  transform:
+    translateY(-5px);
+
+  border-color: #f3bfd9;
+
+  box-shadow:
+    0 15px 35px
+    rgba(236, 72, 153, 0.12);
+}
+
+
+/* =========================================================
+   MEDICINE IMAGE
+========================================================= */
+
+.pharmacy-medicine-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 210px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff4fa,
+      #eef4ff
+    );
+
+  color: #d58db7;
+
+  font-size: 48px;
+}
+
+
+.pharmacy-medicine-image img {
+  width: 100%;
+
+  height: 100%;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   RX BADGE
+========================================================= */
+
+.pharmacy-prescription-top-badge {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 13px;
+
+  right: 13px;
+
+  padding: 6px 9px;
+
+  border-radius: 8px;
+
+  background: #7c3aed;
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 4px 10px
+    rgba(124, 58, 237, 0.2);
+}
+
+
+/* =========================================================
+   MEDICINE BODY
+========================================================= */
+
+.pharmacy-medicine-body {
+  flex: 1;
+
+  padding: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CATEGORY + STOCK
+========================================================= */
+
+.pharmacy-medicine-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+.pharmacy-category {
+  color: #7c3aed;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+
+.pharmacy-stock-badge {
+  position: static;
+
+  padding: 6px 9px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.pharmacy-stock-badge.good {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.pharmacy-stock-badge.low {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+
+.pharmacy-stock-badge.out {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   MEDICINE NAME
+========================================================= */
+
+.pharmacy-medicine-body h3 {
+  margin: 12px 0 5px;
+
+  color: #111827;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   GENERIC / BRAND
+========================================================= */
+
+.pharmacy-generic-name {
+  margin: 0;
+
+  color: #4b5563;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.pharmacy-brand-name {
+  margin: 7px 0 0;
+
+  color: #8a93a3;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   FORM / PACK
+========================================================= */
+
+.pharmacy-medicine-meta {
+  margin-top: 12px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.pharmacy-medicine-meta span {
+  padding: 5px 8px;
+
+  border: 1px solid #eef2f7;
+
+  border-radius: 6px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.pharmacy-description {
+  margin: 12px 0 0;
+
+  color: #6b7280;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PRESCRIPTION INFO
+========================================================= */
+
+.pharmacy-prescription-info {
+  margin-top: 13px;
+
+  padding: 8px 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.pharmacy-prescription-info.required {
+  background: #f5edff;
+
+  color: #7c3aed;
+}
+
+
+.pharmacy-prescription-info.normal {
+  background: #ecfdf5;
+
+  color: #15803d;
+}
+
+
+/* =========================================================
+   PRICE + STOCK STATUS
+========================================================= */
+
+.pharmacy-price-row {
+  margin-top: auto;
+
+  padding-top: 16px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+.pharmacy-price-row small {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: #9ca3af;
+
+  font-size: 9px;
+}
+
+
+.pharmacy-price-row strong {
+  color: #db2777;
+
+  font-size: 20px;
+
+  font-weight: 800;
+}
+
+
+.pharmacy-in-stock,
+.pharmacy-out-stock {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.pharmacy-in-stock {
+  color: #16a34a;
+}
+
+
+.pharmacy-out-stock {
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+.pharmacy-add-cart-btn {
+  width: 100%;
+
+  height: 43px;
+
+  margin-top: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.pharmacy-add-cart-btn:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(236, 72, 153, 0.23);
+}
+
+
+.pharmacy-add-cart-btn:disabled {
+  background: #e5e7eb;
+
+  color: #9ca3af;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
+
+.pharmacy-empty-state {
+  min-height: 330px;
+
+  padding: 50px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #eee7ef;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  color: #6b7280;
+}
+
+
+.pharmacy-empty-state > svg {
+  margin-bottom: 13px;
+
+  color: #dba6c2;
+
+  font-size: 43px;
+}
+
+
+.pharmacy-empty-state h3 {
+  margin: 0;
+
+  color: #111827;
+}
+
+
+.pharmacy-empty-state p {
+  margin: 8px 0 0;
+}
+
+
+.pharmacy-empty-state button {
+  margin-top: 14px;
+
+  padding: 9px 17px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.pharmacy-loader {
+  width: 36px;
+
+  height: 36px;
+
+  margin-bottom: 14px;
+
+  border: 3px solid #f3d6e6;
+
+  border-top-color: #ec4899;
+
+  border-radius: 50%;
+
+  animation:
+    pharmacySpin
+    0.8s
+    linear
+    infinite;
+}
+
+
+@keyframes pharmacySpin {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pharmacy-pagination-area {
+  width: 100%;
+
+  margin-top: 30px;
+
+  padding: 18px 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #edf0f5;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.04);
+}
+
+
+.pharmacy-pagination-area p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.pharmacy-pagination-area p strong {
+  color: #111827;
+}
+
+
+.pharmacy-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.pharmacy-pagination button {
+  min-width: 42px;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.pharmacy-pagination button:hover:not(:disabled) {
+  border-color: #c084fc;
+
+  background: #faf5ff;
+
+  color: #9333ea;
+}
+
+
+.pharmacy-pagination button.active-page {
+  border-color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 14px
+    rgba(139, 92, 246, 0.22);
+}
+
+
+.pharmacy-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+
+.pharmacy-page-arrow {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - LARGE TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+
+  .pharmacy-medicine-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .pharmacy-hero {
+    min-height: auto;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .pharmacy-cart-button {
+    align-self: flex-start;
+  }
+
+
+  .pharmacy-filter-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .pharmacy-medicine-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .pharmacy-hero {
+    width: 94%;
+
+    margin-top: 95px;
+
+    padding: 26px 20px;
+
+    border-radius: 16px;
+  }
+
+
+  .pharmacy-hero h1 {
+    font-size: 29px;
+  }
+
+
+  .pharmacy-main {
+    width: 94%;
+
+    padding-top: 30px;
+  }
+
+
+  .pharmacy-toolbar {
+    padding: 16px;
+  }
+
+
+  .pharmacy-search-box {
+    height: 50px;
+
+    padding: 0 14px;
+  }
+
+
+  .pharmacy-filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .pharmacy-filter-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+
+  .pharmacy-medicine-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .pharmacy-pagination-area {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .pharmacy-pagination {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+}
